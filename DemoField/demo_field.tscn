@@ -19,3 +19,16 @@ position = Vector2(-400, 31)
 
 [node name="Missle Enemy" parent="." unique_id=174430747 instance=ExtResource("2_xhp28")]
 position = Vector2(252, 244)
+ramping_speed = true
+
+[node name="Missle Enemy2" parent="." unique_id=1704294554 instance=ExtResource("2_xhp28")]
+position = Vector2(-277, 159)
+ramping_speed = true
+
+[node name="Missle Enemy3" parent="." unique_id=1015054986 instance=ExtResource("2_xhp28")]
+position = Vector2(-213, -325)
+ramping_speed = true
+
+[node name="Missle Enemy4" parent="." unique_id=106514785 instance=ExtResource("2_xhp28")]
+position = Vector2(366, -268)
+ramping_speed = true
