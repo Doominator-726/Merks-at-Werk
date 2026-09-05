@@ -8,6 +8,8 @@ const ACCELERATION = 7200
 const REVERSING_ACCELERATION = -3600
 const FRICTION = 7200
 
+var bullet_damage = 1
+
 var Bullet = preload("res://Player/playerbullet.tscn")
 
 @onready var input_axis = Vector2.ZERO
@@ -66,10 +68,12 @@ func _process(delta: float):
 
 func shoot():
 	var bullet = Bullet.instantiate()
+	bullet.damage = bullet_damage
 	bullet.transform = SpawnPos.global_transform
 	get_tree().current_scene.add_child(bullet)
 
 	var bullet_behind = Bullet.instantiate()
+	bullet.damage = bullet_damage
 	bullet_behind.transform = SpawnPos.global_transform
 	bullet_behind.transform.x = -bullet_behind.transform.x
 	get_tree().current_scene.add_child(bullet_behind)

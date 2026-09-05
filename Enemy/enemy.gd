@@ -10,7 +10,7 @@ func _physics_process(delta: float) -> void:
 	if state == "demo":
 		pass
 
-func enemy_hit():
-	health -= 1
-	if !health:
+func enemy_hit(damage):
+	health -= damage
+	if health <= 0:
 		queue_free()
