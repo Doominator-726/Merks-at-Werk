@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://bj11740uxnxcl"]
+
+[ext_resource type="PackedScene" uid="uid://2oqfqxx5b61g" path="res://enemy.tscn" id="1_22usk"]
+
+[node name="DemoField" type="Node2D" unique_id=1568139286]
+
+[node name="EnemyUp" parent="." unique_id=1721345674 instance=ExtResource("1_22usk")]
+position = Vector2(30, -320)
+
+[node name="EnemyRight" parent="." unique_id=286409417 instance=ExtResource("1_22usk")]
+position = Vector2(400, -30)
+
+[node name="EnemyDown" parent="." unique_id=1478466093 instance=ExtResource("1_22usk")]
+position = Vector2(-29, 320)
+
+[node name="EnemyLeft" parent="." unique_id=1762507740 instance=ExtResource("1_22usk")]
+position = Vector2(-400, 31)
