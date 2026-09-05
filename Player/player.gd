@@ -8,7 +8,7 @@ const ACCELERATION = 7200
 const REVERSING_ACCELERATION = -3600
 const FRICTION = 7200
 
-var Bullet = preload("res://playerbullet.tscn")
+var Bullet = preload("res://Player/playerbullet.tscn")
 
 @onready var input_axis = Vector2.ZERO
 @onready var axis = Vector2.UP

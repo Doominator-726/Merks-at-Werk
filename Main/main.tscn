@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://cqow47bch5ocs"]
+
+[ext_resource type="Script" uid="uid://crtdv5djku0ij" path="res://Main/main.gd" id="1_k3v36"]
+[ext_resource type="PackedScene" uid="uid://ckudr8chj1kgo" path="res://Player/player.tscn" id="2_liyct"]
+[ext_resource type="Script" uid="uid://bqjbnbfd7jlob" path="res://Player/camera.gd" id="3_ib3t1"]
+[ext_resource type="Script" uid="uid://cxfmjbimw3b1d" path="res://enemy_spawner.gd" id="4_f6fdm"]
+[ext_resource type="PackedScene" uid="uid://bj11740uxnxcl" path="res://DemoField/demo_field.tscn" id="5_rj11h"]
+
+[node name="Main" type="Node2D" unique_id=2000310332]
+script = ExtResource("1_k3v36")
+
+[node name="Player" parent="." unique_id=1576711874 instance=ExtResource("2_liyct")]
+slide_on_ceiling = true
+floor_stop_on_slope = false
+floor_constant_speed = true
+floor_block_on_wall = false
+
+[node name="Camera" type="Camera2D" parent="Player" unique_id=1490524235]
+visible = false
+script = ExtResource("3_ib3t1")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="." unique_id=1732974511]
+
+[node name="SpawnTimer" type="Timer" parent="." unique_id=1134912590]
+one_shot = true
+
+[node name="EnemySpawner" type="Node2D" parent="." unique_id=1353233305]
+script = ExtResource("4_f6fdm")
+
+[node name="DemoField" parent="." unique_id=1568139286 instance=ExtResource("5_rj11h")]
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]
