@@ -41,9 +41,9 @@ func _physics_process(delta: float) -> void:
 				collider.player_hit(3)
 				explode()
 	
-func enemy_hit():
-	health -= 1
-	if !health:
+func enemy_hit(damage=1):
+	health -= damage
+	if health <= 0:
 		explode()
 		
 func explode():
