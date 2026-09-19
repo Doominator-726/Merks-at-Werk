@@ -1,22 +1,22 @@
 [gd_scene format=3 uid="uid://bjljqausbacjw"]
 
-[ext_resource type="Script" uid="uid://dk8hyh742vr3j" path="res://HUD/ui.gd" id="1_m6e0p"]
-[ext_resource type="FontFile" uid="uid://dhi4fmghmi168" path="res://fonts/m5x7.ttf" id="2_27fn8"]
+[ext_resource type="Script" uid="uid://dk8hyh742vr3j" path="res://HUD/ui.gd" id="1_1j3m6"]
+[ext_resource type="FontFile" uid="uid://dhi4fmghmi168" path="res://fonts/m5x7.ttf" id="2_ewxn7"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_fyqef"]
 load_path = "res://.godot/imported/main_ui_sprite.PNG-35bb19244ff73f8f119e9366391135f2.ctex"
 
 [sub_resource type="LabelSettings" id="LabelSettings_qnusm"]
-font = ExtResource("2_27fn8")
+font = ExtResource("2_ewxn7")
 font_size = 32
 
 [sub_resource type="LabelSettings" id="LabelSettings_fyqef"]
-font = ExtResource("2_27fn8")
+font = ExtResource("2_ewxn7")
 font_size = 32
 
 [node name="UI" type="CanvasLayer" unique_id=1804255402]
 process_mode = 3
-script = ExtResource("1_m6e0p")
+script = ExtResource("1_1j3m6")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=2087044136]
 offset_right = 256.0
@@ -71,3 +71,17 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
 text = "Game Paused"
+
+[node name="News Ticker" type="ScrollContainer" parent="." unique_id=506826041]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -22.0
+grow_horizontal = 2
+grow_vertical = 0
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="News Ticker" unique_id=272234788]
+layout_mode = 2
