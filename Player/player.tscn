@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bbp8oqgqw25sy" path="res://Player/arrow.png" id="2_btcbx"]
 [ext_resource type="Resource" uid="uid://crwwjlax4edtd" path="res://Bullets/default_pattern.tres" id="2_k53q1"]
 [ext_resource type="Resource" uid="uid://dxpcuer07gm7" path="res://Bullets/tri_shot.tres" id="3_fhl08"]
+[ext_resource type="PackedScene" uid="uid://cvr8f7hblji7y" path="res://HUD/hud.tscn" id="3_btcbx"]
 [ext_resource type="PackedScene" uid="uid://brkbx6pmpd4ik" path="res://Bullets/base_bullet.tscn" id="4_fhl08"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ejy3u"]
@@ -13,7 +14,7 @@ radius = 4.0
 collision_mask = 0
 slide_on_ceiling = false
 script = ExtResource("1_4ntmi")
-shot_pattern = ExtResource("3_fhl08")
+shot_pattern = ExtResource("2_k53q1")
 back_shot_pattern = ExtResource("2_k53q1")
 bullet_scene = ExtResource("4_fhl08")
 

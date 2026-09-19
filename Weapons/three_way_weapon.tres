@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="weapon" format=3 uid="uid://dc0m016cf4fhi"]
+[gd_resource type="Resource" script_class="Weapon" format=3 uid="uid://dc0m016cf4fhi"]
 
 [ext_resource type="Script" uid="uid://npt2osfb35g" path="res://Weapons/weaponResource.gd" id="1_jxk8w"]
 [ext_resource type="PackedScene" uid="uid://fg6k85kg5qyx" path="res://Weapons/playerbullet.tscn" id="1_r68ni"]

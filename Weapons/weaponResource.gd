@@ -1,5 +1,5 @@
 extends Resource
-class_name weapon
+class_name Weapon
 
 @export var bullet_volley_count: int = 5
 @export var bullet_volley_spread: int = 15
