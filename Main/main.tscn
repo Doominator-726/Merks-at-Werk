@@ -33,6 +33,7 @@ script = ExtResource("4_f6fdm")
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1767120346]
 
 [node name="UI" parent="CanvasLayer" unique_id=1763726028 instance=ExtResource("7_ib3t1")]
-anchors_preset = -1
+
+[node name="LevelContainer" type="Node2D" parent="." unique_id=2076192256]
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]

@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Merks at Werk (Correct)"
+config/name="Merks at Werk"
 run/main_scene="uid://cqow47bch5ocs"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="uid://4q335xxs2p"
@@ -18,6 +18,8 @@ config/icon="uid://4q335xxs2p"
 [autoload]
 
 Globals="*uid://bt2mpwavgh3p2"
+flowerwall_crt="*uid://cc1fomjf362h5"
+CrtSettings="*uid://xskpfo66m6g5"
 
 [display]
 
@@ -34,6 +36,10 @@ project/assembly_name="Merks at Werk"
 
 version_control/plugin_name="GitPlugin"
 version_control/autoload_on_startup=true
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/flowerwall_crt/plugin.cfg")
 
 [global_group]
 

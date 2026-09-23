@@ -1,4 +1,5 @@
 extends CharacterBody2D
+@export var explosion_scene: PackedScene
 
 var state = "demo"
 @export var axis = Vector2.ZERO
@@ -56,5 +57,8 @@ func enemy_hit(damage=1):
 		explode()
 		
 func explode():
-	# Some explosion animation.
+	set_physics_process(false)
+	var explosion = explosion_scene.instantiate()
+	explosion.global_position = global_position
+	get_tree().current_scene.add_child(explosion)
 	queue_free()

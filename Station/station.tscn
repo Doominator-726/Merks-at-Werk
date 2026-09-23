@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cpdvlustickvd" path="res://Station/core.png" id="5_u8vu6"]
 [ext_resource type="Texture2D" uid="uid://dsojvn8mxdxxb" path="res://Station/core_destroyed.png" id="6_ppe3g"]
 
-[node name="Station" type="Node2D" unique_id=216108015]
+[node name="Station" type="Node2D" unique_id=216108015 groups=["station"]]
 script = ExtResource("1_g86ch")
 
 [node name="WeakNorth" parent="." unique_id=283975245 groups=["weak"] instance=ExtResource("1_qf0mg")]

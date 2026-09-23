@@ -32,6 +32,7 @@ func destroy_station():
 	if is_destroyed:
 		return
 	is_destroyed = true
+	remove_from_group("station")
 	print("station destroyed")
 	$Core.destroy_part()
 	$Core.disable_part()
