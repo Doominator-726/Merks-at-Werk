@@ -38,6 +38,7 @@ func _physics_process(delta: float) -> void:
 	
 func move_default(delta: float):
 	input_axis = get_input_axis()
+	print(input_axis)
 	if input_axis != Vector2.ZERO:
 		current_acceleration = ACCELERATION
 		axis = input_axis
