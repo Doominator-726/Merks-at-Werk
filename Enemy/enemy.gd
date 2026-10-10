@@ -1,7 +1,8 @@
 extends CharacterBody2D
+
+@export var does_despawn: bool = false
 @export var explosion_scene: PackedScene
 
-var state = "demo"
 @export var axis = Vector2.ZERO
 
 @export var health = 1
@@ -22,15 +23,14 @@ var current_speed: float = 0.0
 func _ready() -> void:
 	if !homing:
 		rotation = axis.angle()
+	if does_despawn:
+		$DespawnTimer.start()
 		
 func _physics_process(delta: float) -> void:
-	if state == "demo":
-		pass
-		
+	
 	if ramping_speed:
 		current_speed = lerp(current_speed, max_speed, delta * ramp_weight)
 		speed = current_speed
-		#print(speed)
 		
 	if speed != 0:
 		
@@ -48,10 +48,10 @@ func _physics_process(delta: float) -> void:
 		if collision:
 			var collider = collision.get_collider()
 			if collider.is_in_group("player"):
-				collider.player_hit(0)
+				collider.hit(0)
 				explode()
 	
-func enemy_hit(damage=1):
+func hit(damage=1):
 	health -= damage
 	if health <= 0:
 		explode()
@@ -62,3 +62,9 @@ func explode():
 	explosion.global_position = global_position
 	get_tree().current_scene.add_child(explosion)
 	queue_free()
+	
+func get_sprite():
+	return $Sprite
+
+func _on_despawn_timer_timeout() -> void:
+	explode()

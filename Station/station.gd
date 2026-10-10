@@ -49,8 +49,6 @@ func _on_missle_spawn_timer_timeout() -> void:
 
 	var missile = missile_scene.instantiate()
 	
-	print(missile)
-
 	missile.global_position = $MissileSpawnPoint.global_position
 
 	get_tree().current_scene.add_child(missile)
@@ -81,4 +79,4 @@ func _on_bullet_timer_timeout() -> void:
 		bullet.look_at(Globals.player_position)
 		
 		get_tree().current_scene.add_child(bullet)
-			
+		

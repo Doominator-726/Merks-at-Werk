@@ -20,6 +20,7 @@ floor_constant_speed = true
 floor_block_on_wall = false
 
 [node name="Camera" type="Camera2D" parent="Player" unique_id=1490524235]
+zoom = Vector2(0.3, 0.3)
 script = ExtResource("3_ib3t1")
 
 [node name="SpawnTimer" type="Timer" parent="." unique_id=1134912590]
@@ -33,5 +34,7 @@ script = ExtResource("4_f6fdm")
 [node name="UI" parent="CanvasLayer" unique_id=1763726028 instance=ExtResource("7_ib3t1")]
 
 [node name="World" parent="." unique_id=56220943 instance=ExtResource("6_liyct")]
+
+[node name="Copied Entities" type="Node2D" parent="." unique_id=1375918527]
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]

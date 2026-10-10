@@ -6,10 +6,10 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xk0nm"]
 size = Vector2(4, 12)
 
-[node name="StationBullet" type="Area2D" unique_id=1825510795]
+[node name="StationBullet" type="Area2D" unique_id=1825510795 groups=["looping_entity"]]
 collision_layer = 8
 script = ExtResource("1_un7u5")
-speed = 200
+speed = 500
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1857497784]
 modulate = Color(1, 0, 0, 1)
@@ -19,3 +19,12 @@ texture = ExtResource("2_mcw3u")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=185184316]
 rotation = 1.5707964
 shape = SubResource("RectangleShape2D_xk0nm")
+
+[node name="DespawnTimer" type="Timer" parent="." unique_id=1688128809]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="DespawnTimer" to="." method="_on_despawn_timer_timeout"]

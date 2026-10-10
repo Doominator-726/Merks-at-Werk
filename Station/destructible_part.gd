@@ -40,3 +40,6 @@ func destroy_part():
 	$Sprite2D.texture = destroyed_texture
 
 	destroyed.emit()
+
+func get_sprite():
+	return $Sprite2D
