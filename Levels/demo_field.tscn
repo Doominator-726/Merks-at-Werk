@@ -39,7 +39,6 @@ position = Vector2(193, -50)
 position = Vector2(249, 179)
 
 [node name="ParallaxBackground" parent="." index="3" unique_id=1386508579]
-visible = false
 scroll_ignore_camera_zoom = true
 
 [node name="Parallax2D" parent="ParallaxBackground" index="0" unique_id=1690788066]

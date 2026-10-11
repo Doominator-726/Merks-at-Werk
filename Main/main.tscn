@@ -20,7 +20,6 @@ floor_constant_speed = true
 floor_block_on_wall = false
 
 [node name="Camera" type="Camera2D" parent="Player" unique_id=1490524235]
-zoom = Vector2(0.3, 0.3)
 script = ExtResource("3_ib3t1")
 
 [node name="SpawnTimer" type="Timer" parent="." unique_id=1134912590]
