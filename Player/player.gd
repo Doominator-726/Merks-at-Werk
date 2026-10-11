@@ -16,7 +16,6 @@ const FRICTION = 5400
 @onready var axis = Vector2.UP
 @onready var SpawnPos = $SpawnPos
 @onready var SpawnPosBehind = $SpawnPosBehind
-@onready var World = get_parent().get_node("World")
 @onready var current_acceleration = 0
 
 var shooting_enabled = true

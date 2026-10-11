@@ -35,7 +35,23 @@ func _physics_process(delta: float) -> void:
 	if speed != 0:
 		
 		if homing:
-			axis = global_position.direction_to(Globals.player_position)
+			
+			var target_position = Globals.player_position
+			if abs(Globals.bounds_positive.x - global_position.x) + abs(Globals.player_position.x - Globals.bounds_negative.x) < abs(Globals.player_position.x - global_position.x):
+				target_position.x = Globals.bounds_positive.x
+			elif abs(Globals.bounds_negative.x - global_position.x) + abs(Globals.player_position.x - Globals.bounds_positive.x) < abs(Globals.player_position.x - global_position.x):
+				target_position.x = Globals.bounds_negative.x
+			else:
+				target_position.x = Globals.player_position.x
+				
+			if abs(Globals.bounds_positive.y - global_position.y) + abs(Globals.player_position.y - Globals.bounds_negative.y) < abs(Globals.player_position.y - global_position.y):
+				target_position.y = Globals.bounds_positive.y
+			elif abs(Globals.bounds_negative.y - global_position.y) + abs(Globals.player_position.y - Globals.bounds_positive.y) < abs(Globals.player_position.y - global_position.y):
+				target_position.y = Globals.bounds_negative.y
+			else:
+				target_position.y = Globals.player_position.y
+			
+			axis = global_position.direction_to(target_position)
 			var target_angle = axis.angle()
 		
 			rotation = rotate_toward(rotation, target_angle, rot_speed * delta)
@@ -68,3 +84,4 @@ func get_sprite():
 
 func _on_despawn_timer_timeout() -> void:
 	explode()
+	

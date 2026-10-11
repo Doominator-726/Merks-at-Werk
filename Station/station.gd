@@ -53,7 +53,6 @@ func _on_missle_spawn_timer_timeout() -> void:
 
 	get_tree().current_scene.add_child(missile)
 
-
 func _on_bullet_timer_timeout() -> void:
 	
 	print(bullet_scene, "HEHEH")

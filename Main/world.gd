@@ -11,8 +11,6 @@ var current_level_index : int = 0
 var current_level = 1
 var current_field
 var map_size : Vector2
-var bounds_positive : Vector2
-var bounds_negative : Vector2
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

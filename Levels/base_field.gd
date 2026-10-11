@@ -16,8 +16,6 @@ func _ready():
 	if timer_enabled:
 		print("start field timer")
 		field_timer.start()
-	print("start spawn timer")
-	spawn_timer.start()
 	
 	# Get map size and bounds using tile map.
 	var tile_map = $ParallaxBackground/Parallax2D/TileMapLayer
@@ -31,8 +29,9 @@ func _ready():
 	var start = tile_map.to_global(tile_map.map_to_local(tile_map.get_used_rect().position))
 	var bounds_negative = Vector2(start[0], end[1])
 	var bounds_positive = Vector2(end[0], start[1])
-	get_parent().bounds_positive = bounds_positive
-	get_parent().bounds_negative = bounds_negative
+	
+	Globals.bounds_positive = bounds_positive
+	Globals.bounds_negative = bounds_negative
 	
 	$ParallaxBackground/Parallax2D.scroll_offset = spawn_positon
 func _process(_delta: float) -> void:

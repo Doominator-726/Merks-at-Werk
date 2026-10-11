@@ -13,17 +13,21 @@ func _process(_delta: float) -> void:
 		
 	for copy in $"Copied Entities".get_children():
 		copy.queue_free()
+		
+	var i = 0
 	for entity in get_tree().get_nodes_in_group("looping_entity"):
 			
+		i += 1
 		if "speed" in entity and entity.speed != 0:
-			if entity.global_position.x >= World.bounds_positive.x:
-				entity.global_position.x = World.bounds_negative.x
-			elif entity.global_position.x <= World.bounds_negative.x:
-				entity.global_position.x = World.bounds_positive.x
-			if entity.global_position.y <= World.bounds_positive.y:
-				entity.global_position.y = World.bounds_negative.y
-			elif entity.global_position.y >= World.bounds_negative.y:
-				entity.global_position.y = World.bounds_positive.y
+			print(entity)
+			if entity.global_position.x >= Globals.bounds_positive.x:
+				entity.global_position.x = Globals.bounds_negative.x
+			elif entity.global_position.x <= Globals.bounds_negative.x:
+				entity.global_position.x = Globals.bounds_positive.x
+			if entity.global_position.y <= Globals.bounds_positive.y:
+				entity.global_position.y = Globals.bounds_negative.y
+			elif entity.global_position.y >= Globals.bounds_negative.y:
+				entity.global_position.y = Globals.bounds_positive.y
 			
 		if !entity.is_in_group("player") and entity.get_parent() != $"Copied Entities":
 			var new_entity = entity.get_sprite().duplicate()
@@ -48,3 +52,4 @@ func _process(_delta: float) -> void:
 					new_entity.global_position = entity.global_position - Vector2(0, World.map_size.y)
 					$"Copied Entities".add_child(new_entity)
 					
+	print(i, "= what")

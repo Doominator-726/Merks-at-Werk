@@ -18,7 +18,6 @@ texture = ExtResource("7_5behj")
 sources/0 = SubResource("TileSetAtlasSource_fxm27")
 
 [node name="DemoField" unique_id=1026051808 instance=ExtResource("1_0glmm")]
-timer_enabled = true
 
 [node name="EnemyUp" parent="Enemies" parent_id_path=PackedInt32Array(1066167768) index="0" unique_id=1721345674 instance=ExtResource("2_5behj")]
 position = Vector2(30, -320)
@@ -33,12 +32,14 @@ position = Vector2(-29, 320)
 position = Vector2(-400, 31)
 
 [node name="AirTurret" parent="Enemies" parent_id_path=PackedInt32Array(1066167768) index="4" unique_id=1216083614 instance=ExtResource("3_fxm27")]
+process_mode = 4
 position = Vector2(193, -50)
 
 [node name="Station" parent="Stations" parent_id_path=PackedInt32Array(1360918004) index="0" unique_id=216108015 instance=ExtResource("4_tiqlc")]
 position = Vector2(249, 179)
 
 [node name="ParallaxBackground" parent="." index="3" unique_id=1386508579]
+visible = false
 scroll_ignore_camera_zoom = true
 
 [node name="Parallax2D" parent="ParallaxBackground" index="0" unique_id=1690788066]
@@ -53,7 +54,6 @@ tile_set = SubResource("TileSet_ib3t1")
 [node name="SpawnTimer" parent="." index="5" unique_id=2117181400]
 wait_time = 3.0
 one_shot = true
-autostart = true
 
 [node name="Marker2D" type="Marker2D" parent="." index="6" unique_id=210042066]
 position = Vector2(544, -288)
