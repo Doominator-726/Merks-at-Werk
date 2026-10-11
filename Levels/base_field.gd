@@ -38,7 +38,6 @@ func _ready():
 	
 	$ParallaxBackground/Parallax2D.scroll_offset = spawn_positon
 func _process(_delta: float) -> void:
-	print(map_size)
 	print(get_parent().bounds_positive)
 	print(get_parent().bounds_negative)
 	if timer_enabled:
