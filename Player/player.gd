@@ -69,11 +69,11 @@ func _on_ShootSpeed_timeout():
 
 
 func shoot():
+	print("player: axis.angle() = ", rad_to_deg(axis.angle()))
 	shot_pattern.fire(SpawnPos.global_position, rad_to_deg(axis.angle()), get_tree().current_scene)
 	back_shot_pattern.fire(SpawnPosBehind.global_position, rad_to_deg((-axis).angle()), get_tree().current_scene)
 	$ShootSpeed.start(shot_pattern.firing_rate)
 	shooting_enabled = false
-
 
 #func shoot_volley_spread():
 	#var bullet: Object
@@ -141,7 +141,7 @@ func hit(damage):
 	health -= damage
 	if health <= 0:
 		explode()
-		
+
 func explode():
 	# Play animation
 	pass
