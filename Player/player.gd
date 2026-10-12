@@ -27,7 +27,6 @@ var shooting_enabled = true
 
 @export var health: int = 5
 
-
 class Dodge:
 	var remaining_duration: float
 	var axis: Vector2
@@ -56,19 +55,9 @@ func _physics_process(delta: float) -> void:
 	move(delta)
 	rotate_default(delta)
 	move_and_slide()
-		
-	if global_position.x > World.map_size.x/2:
-		global_position.x -= World.map_size.x
-	elif global_position.x < -World.map_size.x/2:
-		global_position.x += World.map_size.x
-
-	if global_position.y > World.map_size.y/2:
-		global_position.y -= World.map_size.y
-	elif global_position.y < -World.map_size.y/2:
-		global_position.y += World.map_size.y
+	
 	Globals.player_position = global_position
-
-
+	
 func is_orthogonal(axis_1: Vector2, axis_2: Vector2) -> bool:
 	return is_zero_approx(axis_1.dot(axis_2))
 

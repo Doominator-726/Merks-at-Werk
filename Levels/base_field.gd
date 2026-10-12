@@ -35,8 +35,6 @@ func _ready():
 	
 	$ParallaxBackground/Parallax2D.scroll_offset = spawn_positon
 func _process(_delta: float) -> void:
-	print(get_parent().bounds_positive)
-	print(get_parent().bounds_negative)
 	if timer_enabled:
 		Globals.field_time_left = field_timer.time_left
 func _on_SpawnTimer_timeout() -> void:
