@@ -12,6 +12,8 @@ var current_level = 1
 var current_field
 var map_size : Vector2
 
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	load_field(0)

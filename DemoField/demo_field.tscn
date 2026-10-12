@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://2oqfqxx5b61g" path="res://Enemy/enemy.tscn" id="1_22usk"]
 [ext_resource type="Script" uid="uid://dxvf5kfdqdp7t" path="res://DemoField/demo_field.gd" id="1_x46ey"]
 [ext_resource type="PackedScene" uid="uid://r136u0f8rqfk" path="res://Station/station.tscn" id="2_xhp28"]
-[ext_resource type="PackedScene" uid="uid://mlj06lkmtvw2" path="res://Air Turret/air_turret.tscn" id="5_qo2hy"]
+[ext_resource type="PackedScene" uid="uid://mlj06lkmtvw2" path="res://AirTurret/air_turret.tscn" id="5_qo2hy"]
 
 [node name="DemoField" type="Node2D" unique_id=1568139286]
 script = ExtResource("1_x46ey")
