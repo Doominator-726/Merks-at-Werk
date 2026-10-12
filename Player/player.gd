@@ -138,67 +138,6 @@ func shoot():
 	$ShootSpeed.start(shot_pattern.firing_rate)
 	shooting_enabled = false
 
-#func shoot_volley_spread():
-	#var bullet: Object
-	#var bullet_behind: Object
-	#var count = Weapon.bullet_volley_count
-	#var spread = Weapon.bullet_volley_spread
-	#
-	#
-#
-	#var new_rotation_offset = 0 - spread * (count- 1)/2
-	#var bullet_cache = Weapon.bullet_data.bullet_scene.instantiate()
-	##bullet_cache.load_stats(Weapon.bullet_data)
-	#for i in range(count):
-		#bullet = bullet_cache.duplicate()
-		#bullet.load_stats(Weapon.bullet_data)
-		#bullet.transform = SpawnPos.global_transform
-		#bullet.rotation += deg_to_rad(new_rotation_offset)
-		#new_rotation_offset += spread
-		#get_tree().current_scene.add_child(bullet)
-	#
-	#if Weapon.shoot_behind:
-		#if Weapon.single_behind:
-			#new_rotation_offset = 0
-			#bullet_behind = bullet_cache.duplicate()
-			#bullet_behind.load_stats(Weapon.bullet_data)
-			#bullet_behind.transform = SpawnPosBehind.global_transform
-			#bullet_behind.rotation += deg_to_rad(new_rotation_offset)
-			#bullet_behind.transform.x = -bullet_behind.transform.x
-			#get_tree().current_scene.add_child(bullet_behind)
-		#else:
-			#new_rotation_offset = 0 - spread * (count- 1)/2
-			#for i in range(count):
-				#bullet_behind = bullet_cache.duplicate()
-				#bullet_behind.load_stats(Weapon.bullet_data)
-				#bullet_behind.transform = SpawnPosBehind.global_transform
-				#bullet_behind.rotation += deg_to_rad(new_rotation_offset)
-				#bullet_behind.transform.x = -bullet_behind.transform.x
-				#new_rotation_offset += spread
-				#get_tree().current_scene.add_child(bullet_behind)
-	#
-#func shoot_three_way():
-	#
-	#var bullet: Object
-	#var bullet_behind: Object
-	#
-	#for rot in [-45, 45]:
-		#
-		#bullet = Bullet.instantiate()
-#
-		#bullet.homing_degrees = 0
-		#bullet.max_range = 2000
-		#bullet.transform = SpawnPos.global_transform
-		#bullet.rotation_degrees += rot
-		#get_tree().current_scene.add_child(bullet)
-	#
-	#if Weapon.shoot_behind:
-		#bullet_behind = Bullet.instantiate()
-		#bullet_behind.homing_degrees = 0
-		#bullet_behind.max_range = 2000
-		#bullet_behind.transform = SpawnPosBehind.global_transform
-		#bullet_behind.transform.x = -bullet_behind.transform.x
-		#get_tree().current_scene.add_child(bullet_behind)
 
 func hit(damage):
 	health -= damage
