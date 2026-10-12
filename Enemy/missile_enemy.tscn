@@ -6,6 +6,7 @@
 [node name="MissileEnemy" unique_id=1721345674 instance=ExtResource("1_ira0i")]
 collision_mask = 3
 motion_mode = 1
+does_despawn = true
 speed = 300.0
 homing = true
 

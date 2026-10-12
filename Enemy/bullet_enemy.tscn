@@ -6,6 +6,7 @@
 [node name="BulletEnemy" unique_id=1721345674 instance=ExtResource("1_jqc5q")]
 collision_mask = 1
 motion_mode = 1
+does_despawn = true
 speed = 800.0
 rot_speed = 10.0
 

@@ -15,14 +15,21 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	position += axis * speed * delta
 
-func _on_BaseBullet_body_entered(body: Node2D, target_method = 'enemy_hit') -> void:
-	print(body)
+func _on_BaseBullet_body_entered(body: Node2D, target_method = 'hit') -> void:
 	if body.has_method(target_method):
-		body.enemy_hit(damage)
+		print("HIT", body)
+		body.hit(damage)
 		queue_free()
 
-func _on_BaseBullet_area_entered(area: Area2D, target_method = 'enemy_hit') -> void: #appears to be for Stations
-	print(area)
+func _on_BaseBullet_area_entered(area: Area2D, target_method = 'hit') -> void: #appears to be for Stations
 	if area.has_method(target_method):
-		area.enemy_hit(damage)
+		print("HIT", area)
+		area.hit(damage)
 		queue_free()
+
+func get_sprite():
+	return $Sprite2D
+
+
+func _on_despawn_timer_timeout() -> void:
+	queue_free()

@@ -46,3 +46,6 @@ func enemy_hit(damage):
 	health -= damage
 	if health <= 0:
 		queue_free()
+
+func get_sprite():
+	return $Sprite2D

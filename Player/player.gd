@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const SPEED = 200
+var speed = 200
 const MAX_SPEED = 300
 const MAX_DODGE_SPEED = 600
 const VELOCITY_DELTA = 50
@@ -20,14 +20,12 @@ const FRICTION = 5400
 @onready var axis = Vector2.UP
 @onready var SpawnPos = $SpawnPos
 @onready var SpawnPosBehind = $SpawnPosBehind
-@onready var World = get_parent().get_node("World")
 @onready var current_acceleration = 0
 @onready var dodge: Dodge = null
 @onready var dodge_cooldown: float = 0.0
 var shooting_enabled = true
 
 @export var health: int = 5
-
 
 class Dodge:
 	var remaining_duration: float
@@ -51,26 +49,15 @@ class Dodge:
 
 
 func _physics_process(delta: float) -> void:
-	Globals.player_position = global_position
-
+	
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	move(delta)
 	rotate_default(delta)
 	move_and_slide()
-		
-	if global_position.x > World.map_size.x/2:
-		global_position.x -= World.map_size.x
-	elif global_position.x < -World.map_size.x/2:
-		global_position.x += World.map_size.x
-
-	if global_position.y > World.map_size.y/2:
-		global_position.y -= World.map_size.y
-	elif global_position.y < -World.map_size.y/2:
-		global_position.y += World.map_size.y
+	
 	Globals.player_position = global_position
-
-
+	
 func is_orthogonal(axis_1: Vector2, axis_2: Vector2) -> bool:
 	return is_zero_approx(axis_1.dot(axis_2))
 
@@ -151,17 +138,77 @@ func shoot():
 	$ShootSpeed.start(shot_pattern.firing_rate)
 	shooting_enabled = false
 
+#func shoot_volley_spread():
+	#var bullet: Object
+	#var bullet_behind: Object
+	#var count = Weapon.bullet_volley_count
+	#var spread = Weapon.bullet_volley_spread
+	#
+	#
+#
+	#var new_rotation_offset = 0 - spread * (count- 1)/2
+	#var bullet_cache = Weapon.bullet_data.bullet_scene.instantiate()
+	##bullet_cache.load_stats(Weapon.bullet_data)
+	#for i in range(count):
+		#bullet = bullet_cache.duplicate()
+		#bullet.load_stats(Weapon.bullet_data)
+		#bullet.transform = SpawnPos.global_transform
+		#bullet.rotation += deg_to_rad(new_rotation_offset)
+		#new_rotation_offset += spread
+		#get_tree().current_scene.add_child(bullet)
+	#
+	#if Weapon.shoot_behind:
+		#if Weapon.single_behind:
+			#new_rotation_offset = 0
+			#bullet_behind = bullet_cache.duplicate()
+			#bullet_behind.load_stats(Weapon.bullet_data)
+			#bullet_behind.transform = SpawnPosBehind.global_transform
+			#bullet_behind.rotation += deg_to_rad(new_rotation_offset)
+			#bullet_behind.transform.x = -bullet_behind.transform.x
+			#get_tree().current_scene.add_child(bullet_behind)
+		#else:
+			#new_rotation_offset = 0 - spread * (count- 1)/2
+			#for i in range(count):
+				#bullet_behind = bullet_cache.duplicate()
+				#bullet_behind.load_stats(Weapon.bullet_data)
+				#bullet_behind.transform = SpawnPosBehind.global_transform
+				#bullet_behind.rotation += deg_to_rad(new_rotation_offset)
+				#bullet_behind.transform.x = -bullet_behind.transform.x
+				#new_rotation_offset += spread
+				#get_tree().current_scene.add_child(bullet_behind)
+	#
+#func shoot_three_way():
+	#
+	#var bullet: Object
+	#var bullet_behind: Object
+	#
+	#for rot in [-45, 45]:
+		#
+		#bullet = Bullet.instantiate()
+#
+		#bullet.homing_degrees = 0
+		#bullet.max_range = 2000
+		#bullet.transform = SpawnPos.global_transform
+		#bullet.rotation_degrees += rot
+		#get_tree().current_scene.add_child(bullet)
+	#
+	#if Weapon.shoot_behind:
+		#bullet_behind = Bullet.instantiate()
+		#bullet_behind.homing_degrees = 0
+		#bullet_behind.max_range = 2000
+		#bullet_behind.transform = SpawnPosBehind.global_transform
+		#bullet_behind.transform.x = -bullet_behind.transform.x
+		#get_tree().current_scene.add_child(bullet_behind)
 
-func player_hit(damage):
+func hit(damage):
 	health -= damage
 	if health <= 0:
 		explode()
 
-
 func explode():
 	# Play animation
-	queue_free()
-
+	pass
+	#queue_free()
 
 func snap_to_tenths(vector: Vector2):
 	# Rounds components of vector to tenths place

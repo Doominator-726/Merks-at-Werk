@@ -6,7 +6,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_d20ow"]
 radius = 17.0
 
-[node name="DestructiblePart" type="Area2D" unique_id=284263548]
+[node name="DestructiblePart" type="Area2D" unique_id=284263548 groups=["looping_entity"]]
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_w447f")

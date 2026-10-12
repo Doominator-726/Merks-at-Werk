@@ -1,7 +1,8 @@
 extends CharacterBody2D
+
+@export var does_despawn: bool = false
 @export var explosion_scene: PackedScene
 
-var state = "demo"
 @export var axis = Vector2.ZERO
 
 @export var health = 1
@@ -22,20 +23,35 @@ var current_speed: float = 0.0
 func _ready() -> void:
 	if !homing:
 		rotation = axis.angle()
+	if does_despawn:
+		$DespawnTimer.start()
 		
 func _physics_process(delta: float) -> void:
-	if state == "demo":
-		pass
-		
+	
 	if ramping_speed:
 		current_speed = lerp(current_speed, max_speed, delta * ramp_weight)
 		speed = current_speed
-		#print(speed)
 		
 	if speed != 0:
 		
 		if homing:
-			axis = global_position.direction_to(Globals.player_position)
+			
+			var target_position = Globals.player_position
+			if abs(Globals.bounds_positive.x - global_position.x) + abs(Globals.player_position.x - Globals.bounds_negative.x) < abs(Globals.player_position.x - global_position.x):
+				target_position.x = Globals.bounds_positive.x
+			elif abs(Globals.bounds_negative.x - global_position.x) + abs(Globals.player_position.x - Globals.bounds_positive.x) < abs(Globals.player_position.x - global_position.x):
+				target_position.x = Globals.bounds_negative.x
+			else:
+				target_position.x = Globals.player_position.x
+				
+			if abs(Globals.bounds_positive.y - global_position.y) + abs(Globals.player_position.y - Globals.bounds_negative.y) < abs(Globals.player_position.y - global_position.y):
+				target_position.y = Globals.bounds_positive.y
+			elif abs(Globals.bounds_negative.y - global_position.y) + abs(Globals.player_position.y - Globals.bounds_positive.y) < abs(Globals.player_position.y - global_position.y):
+				target_position.y = Globals.bounds_negative.y
+			else:
+				target_position.y = Globals.player_position.y
+			
+			axis = global_position.direction_to(target_position)
 			var target_angle = axis.angle()
 		
 			rotation = rotate_toward(rotation, target_angle, rot_speed * delta)
@@ -48,10 +64,10 @@ func _physics_process(delta: float) -> void:
 		if collision:
 			var collider = collision.get_collider()
 			if collider.is_in_group("player"):
-				collider.player_hit(0)
+				collider.hit(0)
 				explode()
 	
-func enemy_hit(damage=1):
+func hit(damage=1):
 	health -= damage
 	if health <= 0:
 		explode()
@@ -62,3 +78,10 @@ func explode():
 	explosion.global_position = global_position
 	get_tree().current_scene.add_child(explosion)
 	queue_free()
+	
+func get_sprite():
+	return $Sprite
+
+func _on_despawn_timer_timeout() -> void:
+	explode()
+	

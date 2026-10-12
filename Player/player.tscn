@@ -7,9 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://bk54nqr8r4kcx" path="res://Player/mech_rig.tscn" id="4_k53q1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ejy3u"]
-radius = 4.0
+radius = 17.117243
 
-[node name="Player" type="CharacterBody2D" unique_id=1576711874 groups=["player"]]
+[node name="Player" type="CharacterBody2D" unique_id=1576711874 groups=["looping_entity", "player"]]
 collision_mask = 0
 slide_on_ceiling = false
 script = ExtResource("1_4ntmi")

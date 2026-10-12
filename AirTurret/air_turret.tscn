@@ -1,13 +1,13 @@
 [gd_scene format=3 uid="uid://mlj06lkmtvw2"]
 
-[ext_resource type="Script" uid="uid://cf87m5fgmd3tf" path="res://Air Turret/air_turret.gd" id="1_a1qjs"]
+[ext_resource type="Script" uid="uid://cf87m5fgmd3tf" path="res://AirTurret/air_turret.gd" id="1_a1qjs"]
 [ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://icon.svg" id="1_p6n10"]
 [ext_resource type="PackedScene" uid="uid://5jsy613n8yxi" path="res://Enemy/bullet_enemy.tscn" id="2_srtaf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a1qjs"]
 size = Vector2(32, 32)
 
-[node name="AirTurret" type="CharacterBody2D" unique_id=1216083614]
+[node name="AirTurret" type="CharacterBody2D" unique_id=1216083614 groups=["looping_entity"]]
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_a1qjs")

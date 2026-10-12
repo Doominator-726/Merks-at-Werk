@@ -13,6 +13,7 @@ func fire(spawn_pos: Vector2, base_angle, tree_root):
 		return
 	if not bullet_scene:
 		return
+	
 	#print(base_angle)
 	print("base_angle = ", base_angle)
 	var start_angle = base_angle - spread_angle / 2
