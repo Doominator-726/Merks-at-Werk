@@ -37,20 +37,20 @@ func _physics_process(delta: float) -> void:
 		if homing:
 			
 			var target_position = Globals.player_position
-			if abs(Globals.bounds_positive.x - global_position.x) + abs(Globals.player_position.x - Globals.bounds_negative.x) < abs(Globals.player_position.x - global_position.x):
-				target_position.x = Globals.bounds_positive.x
-			elif abs(Globals.bounds_negative.x - global_position.x) + abs(Globals.player_position.x - Globals.bounds_positive.x) < abs(Globals.player_position.x - global_position.x):
-				target_position.x = Globals.bounds_negative.x
+			if abs(Globals.map_bounds.end[0] - global_position.x) + abs(Globals.player_position.x - Globals.map_bounds.position[0]) < abs(Globals.player_position.x - global_position.x):
+				target_position.x = Globals.map_bounds.end[0]
+			elif abs(Globals.map_bounds.position[0] - global_position.x) + abs(Globals.player_position.x - Globals.map_bounds.end[0]) < abs(Globals.player_position.x - global_position.x):
+				target_position.x = Globals.map_bounds.position[0]
 			else:
 				target_position.x = Globals.player_position.x
 				
-			if abs(Globals.bounds_positive.y - global_position.y) + abs(Globals.player_position.y - Globals.bounds_negative.y) < abs(Globals.player_position.y - global_position.y):
-				target_position.y = Globals.bounds_positive.y
-			elif abs(Globals.bounds_negative.y - global_position.y) + abs(Globals.player_position.y - Globals.bounds_positive.y) < abs(Globals.player_position.y - global_position.y):
-				target_position.y = Globals.bounds_negative.y
+			if abs(Globals.map_bounds.end[1] - global_position.y) + abs(Globals.player_position.y - Globals.map_bounds.position[1]) < abs(Globals.player_position.y - global_position.y):
+				target_position.y = Globals.map_bounds.end[1]
+			elif abs(Globals.map_bounds.position[1] - global_position.y) + abs(Globals.player_position.y - Globals.map_bounds.end[1]) < abs(Globals.player_position.y - global_position.y):
+				target_position.y = Globals.map_bounds.position[1]
 			else:
 				target_position.y = Globals.player_position.y
-			
+	
 			axis = global_position.direction_to(target_position)
 			var target_angle = axis.angle()
 		

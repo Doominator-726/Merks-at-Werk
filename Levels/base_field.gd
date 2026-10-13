@@ -1,7 +1,6 @@
 class_name BaseField
 extends Node2D
 
-@export var map_size : Vector2 = Vector2(2560, 2560)
 @export var spawn_positon : Vector2 = Vector2.ZERO
 @export var bonus_points  : int = 40
 @export var timer_enabled : bool = false
@@ -10,6 +9,8 @@ extends Node2D
 
 @onready var field_timer: Node = $FieldTimer
 @onready var spawn_timer: Node = $SpawnTimer
+
+var map_size: Vector2
 
 func _ready():
 	Globals.player_position = spawn_positon
@@ -24,15 +25,16 @@ func _ready():
 	get_parent().map_size = map_size
 	$ParallaxBackground/Parallax2D.repeat_size = map_size
 	$ParallaxBackground/Parallax2D.scroll_offset = spawn_positon
-	
-	var end = tile_map.to_global(tile_map.map_to_local(tile_map.get_used_rect().end))
 	var start = tile_map.to_global(tile_map.map_to_local(tile_map.get_used_rect().position))
-	var bounds_negative = Vector2(start[0], end[1])
-	var bounds_positive = Vector2(end[0], start[1])
+	var end = tile_map.to_global(tile_map.map_to_local(tile_map.get_used_rect().end))
 	
-	Globals.bounds_positive = bounds_positive
-	Globals.bounds_negative = bounds_negative
+	var map_bounds = Rect2(start, end - start)
 	
+	Globals.map_size = map_size
+	Globals.map_bounds = map_bounds
+	
+	
+		
 	$ParallaxBackground/Parallax2D.scroll_offset = spawn_positon
 func _process(_delta: float) -> void:
 	if timer_enabled:

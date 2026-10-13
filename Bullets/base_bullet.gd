@@ -17,13 +17,13 @@ func _physics_process(delta: float) -> void:
 
 func _on_BaseBullet_body_entered(body: Node2D, target_method = 'hit') -> void:
 	if body.has_method(target_method):
-		print("HIT", body)
+		print("HIT ", body)
 		body.hit(damage)
 		queue_free()
 
 func _on_BaseBullet_area_entered(area: Area2D, target_method = 'hit') -> void: #appears to be for Stations
 	if area.has_method(target_method):
-		print("HIT", area)
+		print("HIT ", area)
 		area.hit(damage)
 		queue_free()
 

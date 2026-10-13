@@ -17,14 +17,14 @@ func _process(_delta: float) -> void:
 	for entity in get_tree().get_nodes_in_group("looping_entity"):
 			
 		if "speed" in entity and entity.speed != 0:
-			if entity.global_position.x >= Globals.bounds_positive.x:
-				entity.global_position.x = Globals.bounds_negative.x
-			elif entity.global_position.x <= Globals.bounds_negative.x:
-				entity.global_position.x = Globals.bounds_positive.x
-			if entity.global_position.y <= Globals.bounds_positive.y:
-				entity.global_position.y = Globals.bounds_negative.y
-			elif entity.global_position.y >= Globals.bounds_negative.y:
-				entity.global_position.y = Globals.bounds_positive.y
+			if entity.global_position.x >= Globals.map_bounds.end[0]:
+				entity.global_position.x -= Globals.map_size.x
+			elif entity.global_position.x < Globals.map_bounds.position[0]:
+				entity.global_position.x += Globals.map_size.x
+			if entity.global_position.y >= Globals.map_bounds.end[1]:
+				entity.global_position.y -= Globals.map_size.y
+			elif entity.global_position.y < Globals.map_bounds.position[1]:
+				entity.global_position.y += Globals.map_size.y
 			
 		if !entity.is_in_group("player") and entity.get_parent() != $"Copied Entities":
 			var new_entity = entity.get_sprite().duplicate()
