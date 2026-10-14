@@ -16,6 +16,9 @@ func _process(_delta: float) -> void:
 		
 	for entity in get_tree().get_nodes_in_group("looping_entity"):
 			
+		if !is_instance_valid(entity):
+			return
+			
 		if "speed" in entity and entity.speed != 0:
 			if entity.global_position.x >= Globals.map_bounds.end[0]:
 				entity.global_position.x -= Globals.map_size.x
