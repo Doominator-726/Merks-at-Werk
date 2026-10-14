@@ -16,6 +16,9 @@ func _process(_delta: float) -> void:
 		
 	for entity in get_tree().get_nodes_in_group("looping_entity"):
 			
+		if !is_instance_valid(entity):
+			return
+			
 		if "speed" in entity and entity.speed != 0:
 			if entity.global_position.x >= Globals.map_bounds.end[0]:
 				entity.global_position.x -= Globals.map_size.x
@@ -26,7 +29,7 @@ func _process(_delta: float) -> void:
 			elif entity.global_position.y < Globals.map_bounds.position[1]:
 				entity.global_position.y += Globals.map_size.y
 			
-		if !entity.is_in_group("player") and entity.get_parent() != $"Copied Entities":
+		if !entity.is_in_group("player"):
 			var new_entity = entity.get_sprite().duplicate()
 			
 			if Globals.player_position.x >= 0:
@@ -48,4 +51,3 @@ func _process(_delta: float) -> void:
 				if entity.global_position.y > 0:
 					new_entity.global_position = entity.global_position - Vector2(0, World.map_size.y)
 					$"Copied Entities".add_child(new_entity)
-					
