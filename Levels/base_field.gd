@@ -1,7 +1,7 @@
 class_name BaseField
 extends Node2D
 
-@export var spawn_positon : Vector2 = Vector2.ZERO
+@export var spawn_position : Vector2 = Vector2.ZERO
 @export var bonus_points  : int = 40
 @export var timer_enabled : bool = false
 
@@ -13,7 +13,7 @@ extends Node2D
 var map_size: Vector2
 
 func _ready():
-	Globals.player_position = spawn_positon
+	Globals.player_position = spawn_position
 	if timer_enabled:
 		print("start field timer")
 		field_timer.start()
@@ -24,7 +24,7 @@ func _ready():
 	map_size = Vector2(tile_map.get_used_rect().size) * Vector2(tile_map.tile_set.tile_size) * tile_map.scale
 	get_parent().map_size = map_size
 	$ParallaxBackground/Parallax2D.repeat_size = map_size
-	$ParallaxBackground/Parallax2D.scroll_offset = spawn_positon
+	$ParallaxBackground/Parallax2D.scroll_offset = spawn_position
 	var start = tile_map.to_global(tile_map.map_to_local(tile_map.get_used_rect().position))
 	var end = tile_map.to_global(tile_map.map_to_local(tile_map.get_used_rect().end))
 	
@@ -32,13 +32,16 @@ func _ready():
 	
 	Globals.map_size = map_size
 	Globals.map_bounds = map_bounds
-	
-	
-		
-	$ParallaxBackground/Parallax2D.scroll_offset = spawn_positon
+	$ParallaxBackground/Parallax2D.scroll_offset = spawn_position
+	print("map bounds = ", Globals.map_bounds)
+	print("map size = ", Globals.map_size)
+	print("spawn position = ", spawn_position)
+
 func _process(_delta: float) -> void:
 	if timer_enabled:
 		Globals.field_time_left = field_timer.time_left
+
+
 func _on_SpawnTimer_timeout() -> void:
 	var missile = missile_scene.instantiate()
 	var screen_size = DisplayServer.screen_get_size()

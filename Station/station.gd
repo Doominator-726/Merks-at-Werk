@@ -55,7 +55,7 @@ func _on_missle_spawn_timer_timeout() -> void:
 
 func _on_bullet_timer_timeout() -> void:
 	
-	print(bullet_scene, "HEHEH")
+	print("New station bullet: ", bullet_scene)
 	if bullet_scene == null:
 		return
 		

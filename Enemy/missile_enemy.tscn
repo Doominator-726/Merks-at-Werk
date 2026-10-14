@@ -14,3 +14,6 @@ homing = true
 modulate = Color(1, 0, 0, 1)
 rotation = 1.5707964
 texture = ExtResource("2_f2qha")
+
+[node name="DespawnTimer" parent="." index="2" unique_id=2055281637]
+one_shot = true
