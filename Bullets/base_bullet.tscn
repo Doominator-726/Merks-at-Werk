@@ -22,11 +22,12 @@ shape = SubResource("RectangleShape2D_s271d")
 [node name="DespawnTimer" type="Timer" parent="." unique_id=1804436950]
 wait_time = 0.5
 one_shot = true
-autostart = true
 
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1207218822]
+[node name="Notifier" type="VisibleOnScreenNotifier2D" parent="." unique_id=1207218822]
 rect = Rect2(-6, -2, 12, 4)
 
 [connection signal="area_entered" from="." to="." method="_on_BaseBullet_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_BaseBullet_body_entered"]
 [connection signal="timeout" from="DespawnTimer" to="." method="_on_despawn_timer_timeout"]
+[connection signal="screen_entered" from="Notifier" to="." method="_on_notifier_screen_entered"]
+[connection signal="screen_exited" from="Notifier" to="." method="_on_notifier_screen_exited"]

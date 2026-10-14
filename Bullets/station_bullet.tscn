@@ -21,10 +21,14 @@ rotation = 1.5707964
 shape = SubResource("RectangleShape2D_xk0nm")
 
 [node name="DespawnTimer" type="Timer" parent="." unique_id=1688128809]
-wait_time = 5.0
+wait_time = 0.1
 one_shot = true
-autostart = true
+
+[node name="Notifier" type="VisibleOnScreenNotifier2D" parent="." unique_id=750836566]
+rect = Rect2(-6, -2, 12, 4)
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="DespawnTimer" to="." method="_on_despawn_timer_timeout"]
+[connection signal="screen_entered" from="Notifier" to="." method="_on_notifier_screen_entered"]
+[connection signal="screen_exited" from="Notifier" to="." method="_on_notifier_screen_exited"]

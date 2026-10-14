@@ -7,6 +7,10 @@
 
 [node name="DemoField" type="Node2D" unique_id=1568139286]
 script = ExtResource("1_x46ey")
+spawn_position = null
+bonus_points = null
+timer_enabled = null
+missile_scene = null
 
 [node name="EnemyUp" parent="." unique_id=1721345674 instance=ExtResource("1_22usk")]
 position = Vector2(30, -320)

@@ -28,8 +28,8 @@ func load_field(index : int):
 	if index == 0:
 		if current_field:
 			current_field.queue_free()
-		current_field = load("res://Levels/demo_field.tscn").instantiate()
-		print("demo_field loaded")
+		current_field = load("res://Levels/demo_field2.tscn").instantiate()
+		print("demo_field2 loaded")
 	elif 1 <= index and index < INF:
 		if current_field:
 			current_field.queue_free()
@@ -38,6 +38,6 @@ func load_field(index : int):
 		var current_field_filename = "res://Levels/" + current_level_string + "/field_" + index_string + ".tscn"
 		print(current_field_filename)
 		current_field = load(current_field_filename).instantiate()
+		print("%d loaded" % index)
 	add_child(current_field)
 	map_size = current_field.map_size
-	print("%d loaded" % index)

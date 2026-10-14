@@ -18,3 +18,6 @@ sources/1 = SubResource("TileSetAtlasSource_0042q")
 [node name="TileMapLayer" parent="ParallaxBackground/Parallax2D" parent_id_path=PackedInt32Array(1690788066) index="0" unique_id=1299603768]
 position = Vector2(-36, 26)
 tile_set = SubResource("TileSet_s271d")
+
+[node name="SpawnTimer" parent="." index="5" unique_id=2117181400]
+wait_time = 1.0

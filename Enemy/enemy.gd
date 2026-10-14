@@ -56,7 +56,7 @@ func _physics_process(delta: float) -> void:
 		
 			rotation = rotate_toward(rotation, target_angle, rot_speed * delta)
 			axis = Vector2.RIGHT.rotated(rotation)
-		
+
 		if axis != Vector2.ZERO:
 			velocity = speed * axis
 			
@@ -84,4 +84,3 @@ func get_sprite():
 
 func _on_despawn_timer_timeout() -> void:
 	explode()
-	
