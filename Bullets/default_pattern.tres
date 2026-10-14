@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ShotPattern" format=3 uid="uid://crwwjlax4edtd"]
 
-[ext_resource type="PackedScene" uid="uid://brkbx6pmpd4ik" path="res://Bullets/base_bullet.tscn" id="1_giajh"]
+[ext_resource type="PackedScene" uid="uid://cy5oo282a0agm" path="res://Player/player_bullet.tscn" id="1_giajh"]
 [ext_resource type="Script" uid="uid://diyh76t1kbfuk" path="res://Bullets/shot_pattern.gd" id="1_y7hm5"]
 
 [resource]
