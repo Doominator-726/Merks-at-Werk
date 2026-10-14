@@ -34,6 +34,6 @@ script = ExtResource("4_f6fdm")
 
 [node name="World" parent="." unique_id=56220943 instance=ExtResource("6_liyct")]
 
-[node name="Copied Entities" type="Node2D" parent="." unique_id=1375918527]
+[node name="CopiedEntities" type="Node2D" parent="." unique_id=1375918527]
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]
