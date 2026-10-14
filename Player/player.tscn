@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://80kl10p8d3vr" path="res://Player/player.gd" id="1_4ntmi"]
 [ext_resource type="Texture2D" uid="uid://bbp8oqgqw25sy" path="res://Player/arrow.png" id="2_btcbx"]
 [ext_resource type="Resource" uid="uid://crwwjlax4edtd" path="res://Bullets/default_pattern.tres" id="2_k53q1"]
-[ext_resource type="PackedScene" uid="uid://brkbx6pmpd4ik" path="res://Bullets/base_bullet.tscn" id="4_fhl08"]
 [ext_resource type="PackedScene" uid="uid://bk54nqr8r4kcx" path="res://Player/mech_rig.tscn" id="4_k53q1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ejy3u"]
@@ -15,7 +14,6 @@ slide_on_ceiling = false
 script = ExtResource("1_4ntmi")
 shot_pattern = ExtResource("2_k53q1")
 back_shot_pattern = ExtResource("2_k53q1")
-bullet_scene = ExtResource("4_fhl08")
 
 [node name="mech" parent="." unique_id=1512406156 instance=ExtResource("4_k53q1")]
 

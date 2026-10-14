@@ -28,8 +28,8 @@ func load_field(index : int):
 	if index == 0:
 		if current_field:
 			current_field.queue_free()
-		current_field = load("res://Levels/demo_field2.tscn").instantiate()
-		print("demo_field2 loaded")
+		current_field = load("res://Levels/demo_field.tscn").instantiate()
+		print("demo_field loaded")
 	elif 1 <= index and index < INF:
 		if current_field:
 			current_field.queue_free()

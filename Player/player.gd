@@ -10,11 +10,8 @@ const DODGE_DURATION = 0.25
 const DODGE_COOLDOWN_DURATION = 0.5
 const FRICTION = 5400
 
-# Weapon Stats
-
 @export var shot_pattern: ShotPattern
 @export var back_shot_pattern: ShotPattern
-@export var bullet_scene: PackedScene
 
 @onready var input_axis = Vector2.ZERO
 @onready var axis = Vector2.UP

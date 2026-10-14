@@ -11,7 +11,7 @@ func _process(_delta: float) -> void:
 	if !stations_cleared and len(get_tree().get_nodes_in_group("station")) == 0:
 		stations_cleared = true
 
-	for copy in $CopiedEntities.get_children():
+	"""for copy in $CopiedEntities.get_children():
 		copy.queue_free()
 		
 	for entity in get_tree().get_nodes_in_group("looping_entity"):
@@ -50,4 +50,4 @@ func _process(_delta: float) -> void:
 			else:
 				if entity.global_position.y > 0:
 					new_entity.global_position = entity.global_position - Vector2(0, World.map_size.y)
-					$CopiedEntities.add_child(new_entity)
+					$CopiedEntities.add_child(new_entity)"""

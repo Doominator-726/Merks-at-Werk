@@ -19,7 +19,7 @@ func _ready():
 	$Sprite2D.texture = start_texture
 
 
-func enemy_hit(damage: float):
+func hit(damage: float):
 	if is_destroyed():
 		return
 
