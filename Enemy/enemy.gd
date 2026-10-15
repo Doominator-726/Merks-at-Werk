@@ -36,27 +36,24 @@ func _physics_process(delta: float) -> void:
 		
 		if homing:
 			
-			var target_position = Globals.player_position
-			if abs(Globals.map_bounds.end[0] - global_position.x) + abs(Globals.player_position.x - Globals.map_bounds.position[0]) < abs(Globals.player_position.x - global_position.x):
-				target_position.x = Globals.map_bounds.end[0]
-			elif abs(Globals.map_bounds.position[0] - global_position.x) + abs(Globals.player_position.x - Globals.map_bounds.end[0]) < abs(Globals.player_position.x - global_position.x):
-				target_position.x = Globals.map_bounds.position[0]
-			else:
-				target_position.x = Globals.player_position.x
-				
-			if abs(Globals.map_bounds.end[1] - global_position.y) + abs(Globals.player_position.y - Globals.map_bounds.position[1]) < abs(Globals.player_position.y - global_position.y):
-				target_position.y = Globals.map_bounds.end[1]
-			elif abs(Globals.map_bounds.position[1] - global_position.y) + abs(Globals.player_position.y - Globals.map_bounds.end[1]) < abs(Globals.player_position.y - global_position.y):
-				target_position.y = Globals.map_bounds.position[1]
-			else:
-				target_position.y = Globals.player_position.y
-	
-			axis = global_position.direction_to(target_position)
-			var target_angle = axis.angle()
-		
-			rotation = rotate_toward(rotation, target_angle, rot_speed * delta)
-			axis = Vector2.RIGHT.rotated(rotation)
+			var to_player: Vector2 = Globals.player_position - global_position
+			# Choose the shortest direction across each wrapped boundary.
+			to_player.x = wrapf(
+				to_player.x,
+				-Globals.map_size.x / 2.0,
+				Globals.map_size.x / 2.0
+			)
+			to_player.y = wrapf(
+				to_player.y,
+				-Globals.map_size.y / 2.0,
+				Globals.map_size.y / 2.0
+			)
 
+			# Turn toward the player using the shortest wrapped direction.
+			if not to_player.is_zero_approx():
+				var target_angle = to_player.angle()
+				rotation = rotate_toward(rotation, target_angle, rot_speed * delta)
+				axis = to_player.normalized()
 		if axis != Vector2.ZERO:
 			velocity = speed * axis
 			

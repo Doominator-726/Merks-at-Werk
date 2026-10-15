@@ -55,6 +55,7 @@ func _physics_process(delta: float) -> void:
 	
 	Globals.player_position = global_position
 	
+	debug_action()
 func is_orthogonal(axis_1: Vector2, axis_2: Vector2) -> bool:
 	return is_zero_approx(axis_1.dot(axis_2))
 
@@ -126,12 +127,17 @@ func _on_ShootSpeed_timeout():
 
 func shoot():
 	# print("player: axis.angle() = ", rad_to_deg(axis.angle()))
-	shot_pattern.fire(SpawnPos.global_position, rad_to_deg(axis.angle()), get_tree().current_scene)
-	back_shot_pattern.fire(
-		SpawnPosBehind.global_position,
-		rad_to_deg((-axis).angle()),
-		get_tree().current_scene,
-	)
+	if shot_pattern:
+		shot_pattern.fire(SpawnPos.global_position,
+			rad_to_deg(axis.angle()),
+			get_tree().current_scene
+		)
+	if back_shot_pattern:
+		back_shot_pattern.fire(
+			SpawnPosBehind.global_position,
+			rad_to_deg((-axis).angle()),
+			get_tree().current_scene,
+		)
 	$ShootSpeed.start(shot_pattern.firing_rate)
 	shooting_enabled = false
 
@@ -145,6 +151,11 @@ func explode():
 	# Play animation
 	pass
 	#queue_free()
+
+
+func debug_action():
+	if Input.is_action_just_pressed("Debug"):
+		print("player gp=", global_position, ", local gp =", position)
 
 func snap_to_tenths(vector: Vector2):
 	# Rounds components of vector to tenths place

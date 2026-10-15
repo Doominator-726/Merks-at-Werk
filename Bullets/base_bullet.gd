@@ -8,12 +8,10 @@ extends Area2D
 @onready var despawn_timer = $DespawnTimer
 
 var axis = Vector2.UP
-var is_off_screen = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	is_off_screen = false
-
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 # This function should be overridden for each bullet type
@@ -35,26 +33,11 @@ func _on_area_entered(area: Area2D, target_method = 'hit') -> void: #appears to 
 		queue_free()
 
 
+
 func get_sprite():
 	return $Sprite2D
 
 
 func _on_despawn_timer_timeout() -> void:
-	if is_off_screen:
-		print("bullet despawned")
-		queue_free()
-
-
-func _on_notifier_screen_entered() -> void:
-	if is_off_screen:
-		print("bullet back on_screen!")
-		despawn_timer.stop()
-	else:
-		print("bullet on_screen!")
-	is_off_screen = false
-
-
-func _on_notifier_screen_exited() -> void:
-	print("bullet off_screen!")
-	is_off_screen = true
-	despawn_timer.start()
+	print(name)
+	queue_free()

@@ -42,6 +42,7 @@ wait_time = 3.0
 autostart = true
 
 [node name="BulletTimer" type="Timer" parent="." unique_id=1557714664]
+wait_time = 2.0
 autostart = true
 
 [connection signal="timeout" from="MissleSpawnTimer" to="." method="_on_missle_spawn_timer_timeout"]

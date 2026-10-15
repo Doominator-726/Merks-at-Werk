@@ -1,14 +1,41 @@
 [gd_scene format=3 uid="uid://cqw14lxk8igvv"]
 
-[ext_resource type="Script" uid="uid://bfixv0glkbx41" path="res://Bullets/station_bullet.gd" id="1_un7u5"]
 [ext_resource type="Texture2D" uid="uid://doecb30wltyvq" path="res://Player/bullet.png" id="2_mcw3u"]
+
+[sub_resource type="GDScript" id="GDScript_jv6kp"]
+script/source = "extends Bullet
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	super()
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _physics_process(delta: float) -> void:
+	super(delta)
+
+
+func _on_area_entered(area: Area2D, target_method = \"hit\") -> void:
+	super(area)
+
+
+func _on_body_entered(body: Node2D, target_method = \"hit\") -> void:
+	super(body)
+
+
+func get_sprite():
+	return super()
+
+func _on_despawn_timer_timeout() -> void:
+	print(\"station_bullet despawned\")
+	queue_free()
+"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xk0nm"]
 size = Vector2(4, 12)
 
 [node name="StationBullet" type="Area2D" unique_id=1825510795 groups=["looping_entity"]]
 collision_layer = 8
-script = ExtResource("1_un7u5")
+script = SubResource("GDScript_jv6kp")
 speed = 500
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1857497784]
@@ -24,11 +51,6 @@ shape = SubResource("RectangleShape2D_xk0nm")
 wait_time = 0.1
 one_shot = true
 
-[node name="Notifier" type="VisibleOnScreenNotifier2D" parent="." unique_id=750836566]
-rect = Rect2(-6, -2, 12, 4)
-
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="DespawnTimer" to="." method="_on_despawn_timer_timeout"]
-[connection signal="screen_entered" from="Notifier" to="." method="_on_notifier_screen_entered"]
-[connection signal="screen_exited" from="Notifier" to="." method="_on_notifier_screen_exited"]

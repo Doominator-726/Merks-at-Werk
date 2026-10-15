@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://cy6qg71h1i78r"]
+
+[ext_resource type="PackedScene" uid="uid://brkbx6pmpd4ik" path="res://Bullets/base_bullet.tscn" id="1_u4if0"]
+
+[node name="BaseBullet" unique_id=857817251 instance=ExtResource("1_u4if0")]
+collision_layer = 8
+collision_mask = 1
+speed = 200
+
+[node name="Sprite2D" parent="." index="0" unique_id=988235252]
+modulate = Color(1, 0, 0, 1)
+
+[node name="DespawnTimer" parent="." index="2" unique_id=1804436950]
+wait_time = 3.0
