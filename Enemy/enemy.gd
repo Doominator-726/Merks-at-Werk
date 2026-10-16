@@ -20,6 +20,10 @@ var current_speed: float = 0.0
 ## Float multiplied by delta to get weight used for lerping. Increase for faster ramping, decrease for slower ramping.
 @export var ramp_weight: float = 1.0
 
+@export_category("Drops")
+@export var drop_scene: PackedScene
+@export_range(0.0, 1.0) var drop_chance: float = 0.0
+
 func _ready() -> void:
 	if !homing:
 		rotation = axis.angle()
@@ -65,10 +69,21 @@ func _physics_process(delta: float) -> void:
 				explode()
 	
 func hit(damage=1):
+	if health <= 0:
+		return
 	HitAnim.hit_flash(get_sprite())
 	health -= damage
 	if health <= 0:
+		drop_powerup()
 		explode()
+
+
+func drop_powerup():
+	if drop_scene == null or randf() >= drop_chance:
+		return
+	var drop = drop_scene.instantiate()
+	drop.global_position = global_position
+	get_tree().current_scene.add_child(drop)
 		
 func explode():
 	set_physics_process(false)
