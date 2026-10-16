@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cfy21fcc5rtx0" path="res://Tilesets/CityTiles/city_tiles.png" id="2_1w0t0"]
 [ext_resource type="PackedScene" uid="uid://r136u0f8rqfk" path="res://Station/station.tscn" id="4_nrqr8"]
 [ext_resource type="Texture2D" uid="uid://bxct7xx8nhxtm" path="res://Test Tile Set/test_tile_set.png" id="5_d21c3"]
+[ext_resource type="PackedScene" uid="uid://9aayxcsxq6gig" path="res://Powerups/powerup.tscn" id="6_pwrup"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lo1c4"]
 texture = ExtResource("2_1w0t0")
@@ -73,6 +74,9 @@ sources/0 = SubResource("TileSetAtlasSource_fxm27")
 [node name="DemoField" unique_id=1026051808 instance=ExtResource("1_gf68k")]
 
 [node name="Station" parent="Stations" parent_id_path=PackedInt32Array(1360918004) index="0" unique_id=216108015 instance=ExtResource("4_nrqr8")]
+
+[node name="Powerup" parent="Powerups" parent_id_path=PackedInt32Array(1354976689) index="0" unique_id=227868740 instance=ExtResource("6_pwrup")]
+position = Vector2(160, 0)
 
 [node name="ParallaxBackground" parent="." index="3" unique_id=1386508579]
 scroll_ignore_camera_zoom = true

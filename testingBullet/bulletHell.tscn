@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://bp06ixou54jq7"]
+
+[ext_resource type="Script" uid="uid://vooroe6048du" path="res://testingBullet/boss.gd" id="1_5q6as"]
+[ext_resource type="Script" uid="uid://cewoiuumd7kc3" path="res://testingBullet/bulletHellArena.gd" id="1_x7ubr"]
+[ext_resource type="PackedScene" uid="uid://ckudr8chj1kgo" path="res://Player/player.tscn" id="3_ai8ir"]
+[ext_resource type="PackedScene" uid="uid://koi4tepuu34a" path="res://TechArt/explosion_scene.tscn" id="3_j37n5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ai8ir"]
+
+[node name="BulletHell" type="Node2D" unique_id=332398032 node_paths=PackedStringArray("player")]
+script = ExtResource("1_x7ubr")
+player = NodePath("Player")
+boss_move_speed = 20.0
+
+[node name="Boss" type="CharacterBody2D" parent="." unique_id=525393377]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_5q6as")
+explosion_scene = ExtResource("3_j37n5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boss" unique_id=1937231052]
+shape = SubResource("CircleShape2D_ai8ir")
+
+[node name="Player" parent="." unique_id=1576711874 instance=ExtResource("3_ai8ir")]
+position = Vector2(226, 334)

@@ -25,3 +25,4 @@ wait_time = 60.0
 wait_time = 300.0
 
 [connection signal="timeout" from="FieldTimer" to="." method="_on_field_timer_timeout"]
+[node name="Powerups" type="Node2D" parent="." unique_id=1354976689]

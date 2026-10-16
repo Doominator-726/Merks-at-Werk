@@ -12,6 +12,11 @@ const FRICTION = 5400
 
 @export var shot_pattern: ShotPattern
 @export var back_shot_pattern: ShotPattern
+@export var upgrade_tiers: Array[ShotPattern] = []
+var weapon_tier: int = 0
+
+signal weapon_changed(pattern: ShotPattern)
+var bullet_hell_mode := false
 
 @onready var input_axis = Vector2.ZERO
 @onready var axis = Vector2.UP
@@ -45,7 +50,16 @@ class Dodge:
 		return self.remaining_duration / DODGE_DURATION > 0.5
 
 
+func _ready() -> void:
+	weapon_tier = maxi(upgrade_tiers.find(shot_pattern), 0)
+
+
 func _physics_process(delta: float) -> void:
+	if bullet_hell_mode:
+		move_bullet_hell(delta)
+		move_and_slide()
+		Globals.player_position = global_position
+		return
 	
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -127,6 +141,9 @@ func _on_ShootSpeed_timeout():
 
 func shoot():
 	# print("player: axis.angle() = ", rad_to_deg(axis.angle()))
+	var active_pattern: ShotPattern = shot_pattern if shot_pattern else back_shot_pattern
+	if active_pattern == null:
+		return
 	if shot_pattern:
 		shot_pattern.fire(SpawnPos.global_position,
 			rad_to_deg(axis.angle()),
@@ -138,11 +155,29 @@ func shoot():
 			rad_to_deg((-axis).angle()),
 			get_tree().current_scene,
 		)
-	$ShootSpeed.start(shot_pattern.firing_rate)
+	$ShootSpeed.start(active_pattern.firing_rate)
 	shooting_enabled = false
 
 
+func upgrade_weapon() -> void:
+	if upgrade_tiers.is_empty():
+		return
+	weapon_tier = mini(weapon_tier + 1, upgrade_tiers.size() - 1)
+	set_shot_pattern(upgrade_tiers[weapon_tier])
+
+
+func set_shot_pattern(pattern: ShotPattern) -> void:
+	if pattern == null:
+		return
+	shot_pattern = pattern
+	var tier := upgrade_tiers.find(pattern)
+	if tier != -1:
+		weapon_tier = tier
+	weapon_changed.emit(pattern)
+
+
 func hit(damage):
+	HitAnim.hit_flash(self, 0.3, 0.0)
 	health -= damage
 	if health <= 0:
 		explode()
@@ -158,5 +193,11 @@ func debug_action():
 		print("player gp=", global_position, ", local gp =", position)
 
 func snap_to_tenths(vector: Vector2):
-	# Rounds components of vector to tenths place
+
 	return vector.snapped(Vector2(0.1, 0.1))
+func move_bullet_hell(delta: float) -> void:
+	dodge = null
+	axis = Vector2.UP                     
+	var input : Vector2 = get_input_axis()
+	velocity = input.normalized() * speed  
+	rotate_default(delta)                 

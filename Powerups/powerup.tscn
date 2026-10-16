@@ -1,0 +1,24 @@
+[gd_scene format=4 uid="uid://9aayxcsxq6gig"]
+
+[ext_resource type="Script" uid="uid://p46gbhcqwnopc" path="res://Powerups/powerup.gd" id="1_pwrup"]
+[ext_resource type="Texture2D" path="res://Powerups/powerup.png" id="2_pwrup"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pwrup"]
+radius = 12.0
+
+[node name="Powerup" type="Area2D" unique_id=227868740 groups=["looping_entity", "powerup"]]
+collision_layer = 16
+collision_mask = 1
+script = ExtResource("1_pwrup")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1262660926]
+texture = ExtResource("2_pwrup")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=977669963]
+shape = SubResource("CircleShape2D_pwrup")
+
+[node name="DespawnTimer" type="Timer" parent="." unique_id=1169631439]
+one_shot = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="DespawnTimer" to="." method="_on_despawn_timer_timeout"]
