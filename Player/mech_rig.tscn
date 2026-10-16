@@ -32,17 +32,17 @@ region = Rect2(96, 0, 32, 32)
 [node name="mech" type="Node2D" unique_id=1512406156]
 script = ExtResource("1_6or00")
 
-[node name="feet" type="Sprite2D" parent="." unique_id=1362916175]
+[node name="feet2" type="Sprite2D" parent="." unique_id=1362916175]
 texture = SubResource("AtlasTexture_7dno3")
 
-[node name="torso" type="Sprite2D" parent="." unique_id=1844925061]
+[node name="torso2" type="Sprite2D" parent="." unique_id=1844925061]
 texture = SubResource("AtlasTexture_h45xw")
 
-[node name="left_arm" type="Sprite2D" parent="." unique_id=1001046641]
+[node name="left_arm2" type="Sprite2D" parent="." unique_id=1001046641]
 texture = SubResource("AtlasTexture_7q6vc")
 
-[node name="right_arm" type="Sprite2D" parent="." unique_id=2079765839]
+[node name="right_arm2" type="Sprite2D" parent="." unique_id=2079765839]
 texture = SubResource("AtlasTexture_hrye5")
 
-[node name="head" type="Sprite2D" parent="." unique_id=544602068]
+[node name="head2" type="Sprite2D" parent="." unique_id=544602068]
 texture = SubResource("AtlasTexture_5x20r")
