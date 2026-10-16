@@ -33,19 +33,19 @@ scale = Vector2(2, 2)
 torso_turn_speed = 2.5
 front_direction = Vector2(0, 1)
 
-[node name="Feet" type="Sprite2D" parent="Mech" unique_id=1997292450]
+[node name="Feet2" type="Sprite2D" parent="Mech" unique_id=1997292450]
 texture = ExtResource("4_od3ui")
 
-[node name="Torso" type="Sprite2D" parent="Mech" unique_id=454088313]
+[node name="Torso2" type="Sprite2D" parent="Mech" unique_id=454088313]
 texture = ExtResource("5_00tjw")
 
-[node name="LeftArm" type="Sprite2D" parent="Mech" unique_id=1605508667]
+[node name="LeftArm2" type="Sprite2D" parent="Mech" unique_id=1605508667]
 texture = ExtResource("6_x3vf3")
 
-[node name="RightArm" type="Sprite2D" parent="Mech" unique_id=1030672205]
+[node name="RightArm2" type="Sprite2D" parent="Mech" unique_id=1030672205]
 texture = SubResource("AtlasTexture_5htga")
 
-[node name="Head" type="Sprite2D" parent="Mech" unique_id=908769996]
+[node name="Head2" type="Sprite2D" parent="Mech" unique_id=908769996]
 texture = ExtResource("7_apopc")
 
 [node name="HitBox" type="CollisionShape2D" parent="." unique_id=1531635376]

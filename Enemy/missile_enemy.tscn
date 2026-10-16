@@ -28,14 +28,14 @@ scale = Vector2(1.5, 1.5)
 script = ExtResource("3_i7xja")
 front_direction = Vector2(0, 1)
 
-[node name="feet2" type="Sprite2D" parent="mecha" index="0" unique_id=676638685]
+[node name="Feet2" type="Sprite2D" parent="mecha" index="0" unique_id=676638685]
 texture = ExtResource("4_i7xja")
 
-[node name="torso2" type="Sprite2D" parent="mecha" index="1" unique_id=1981911073]
+[node name="Torso2" type="Sprite2D" parent="mecha" index="1" unique_id=1981911073]
 texture = ExtResource("5_sryd8")
 
-[node name="left_arm2" type="Sprite2D" parent="mecha" index="2" unique_id=2120581714]
+[node name="LeftArm2" type="Sprite2D" parent="mecha" index="2" unique_id=2120581714]
 texture = ExtResource("6_1h0k7")
 
-[node name="head2" type="Sprite2D" parent="mecha" index="3" unique_id=1537759573]
+[node name="Head2" type="Sprite2D" parent="mecha" index="3" unique_id=1537759573]
 texture = ExtResource("7_x6prb")
