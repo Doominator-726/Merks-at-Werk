@@ -29,16 +29,16 @@ func load_level(index : int):
 	if 0 <= index and index < levels.size():
 		if current_field:
 			current_field.queue_free()
-		current_level = index
+		current_level_index = index
 		current_field_index = 0
 		load_field(current_field_index)
 func load_field(index : int):
-	if index == 0:
+	if index == -1:
 		if current_field:
 			current_field.queue_free()
 		current_field = load("res://Levels/demo_field2.tscn").instantiate()
 		print("demo_field2 loaded")
-	elif 1 <= index and index < INF:
+	elif 0 <= index and index < level_field_counts[current_level_index] + 1:
 		if current_field:
 			current_field.queue_free()
 		var current_field_filename = get_field(index)
@@ -46,6 +46,8 @@ func load_field(index : int):
 		current_field = load(current_field_filename).instantiate()
 		current_field_index = index
 		print("%d loaded" % current_field_index)
+	else:
+		return
 	add_child(current_field)
 	map_size = current_field.map_size
 	current_field.field_clear.connect(next_field)
