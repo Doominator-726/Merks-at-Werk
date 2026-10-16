@@ -1,9 +1,16 @@
 extends Node
 
 var levels : Array[String] = [
+	"00",
 	"01",
 	"02",
 ]
+var level_field_counts: Array[int] = [
+	1,
+	3,
+	8,
+]
+
 
 var current_level
 var current_level_index: int = 1
@@ -46,7 +53,6 @@ func load_field(index : int):
 func next_field():
 	print("My child's name is ", get_children()[0].name)
 	if not is_demo_field():
-		await get_tree().create_timer(2.5).timeout
 		load_field(current_field_index + 1)
 		
 func get_level(index: int):

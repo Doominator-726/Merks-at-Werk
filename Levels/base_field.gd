@@ -89,4 +89,11 @@ func _check_all_stations_destroyed():
 		== get_tree().get_node_count_in_group("destroyed")
 		):
 		print("Field complete!")
+		await get_tree().create_timer(2.5).timeout
 		field_clear.emit()
+
+
+#normally bad things should happen if the timer clears
+# before the player completes the level
+func _on_field_timer_timeout() -> void:
+	pass
