@@ -165,7 +165,7 @@ func shoot():
 		)
 	if back_shot_pattern:
 		back_shot_pattern.fire(
-			SpawnPosBehind.globasal_position,
+			SpawnPosBehind.global_position,
 			rad_to_deg((-axis).angle()),
 			get_tree().current_scene,
 		)
