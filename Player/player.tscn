@@ -4,6 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://bbp8oqgqw25sy" path="res://Player/arrow.png" id="2_btcbx"]
 [ext_resource type="Resource" uid="uid://crwwjlax4edtd" path="res://Bullets/default_pattern.tres" id="2_k53q1"]
 [ext_resource type="PackedScene" uid="uid://bk54nqr8r4kcx" path="res://Player/mech_rig.tscn" id="4_k53q1"]
+[ext_resource type="Script" uid="uid://diyh76t1kbfuk" path="res://Bullets/shot_pattern.gd" id="5_tiers"]
+[ext_resource type="Resource" uid="uid://dxpcuer07gm7" path="res://Bullets/tri_shot.tres" id="6_tiers"]
+[ext_resource type="Resource" uid="uid://bkwn01b6xsegt" path="res://Bullets/ring_shot.tres" id="7_tiers"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ejy3u"]
 radius = 5.3851647
@@ -14,6 +17,7 @@ slide_on_ceiling = false
 script = ExtResource("1_4ntmi")
 shot_pattern = ExtResource("2_k53q1")
 back_shot_pattern = ExtResource("2_k53q1")
+upgrade_tiers = Array[ExtResource("5_tiers")]([ExtResource("2_k53q1"), ExtResource("6_tiers"), ExtResource("7_tiers")])
 
 [node name="mech" parent="." unique_id=1512406156 instance=ExtResource("4_k53q1")]
 
