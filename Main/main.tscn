@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://cxfmjbimw3b1d" path="res://enemy_spawner.gd" id="4_f6fdm"]
 [ext_resource type="PackedScene" uid="uid://dwuu4ml8r3hb7" path="res://Main/world.tscn" id="6_liyct"]
 [ext_resource type="PackedScene" uid="uid://bjljqausbacjw" path="res://HUD/ui.tscn" id="7_ib3t1"]
+[ext_resource type="PackedScene" uid="uid://bwipe5k2m8qxr" path="res://HUD/screen_wipe.tscn" id="8_wipe"]
 
 [node name="Main" type="Node2D" unique_id=2000310332]
 script = ExtResource("1_k3v36")
@@ -35,5 +36,7 @@ script = ExtResource("4_f6fdm")
 [node name="World" parent="." unique_id=56220943 instance=ExtResource("6_liyct")]
 
 [node name="CopiedEntities" type="Node2D" parent="." unique_id=1375918527]
+
+[node name="ScreenWipe" parent="." unique_id=1849302711 instance=ExtResource("8_wipe")]
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]
