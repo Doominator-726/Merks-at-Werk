@@ -5,6 +5,8 @@ extends Node2D
 
 var is_destroyed = false
 
+signal destroyed
+
 func _get_weaks() -> Array[DestructiblePart]:
 	
 	return get_children().filter(
@@ -32,14 +34,15 @@ func destroy_station():
 	if is_destroyed:
 		return
 	is_destroyed = true
-	remove_from_group("station")
+	add_to_group("destroyed")
 	print("station destroyed")
 	$Core.destroy_part()
 	$Core.disable_part()
 	for weak in _get_weaks():
 		weak.destroy_part()
 		weak.disable_part()
-		
+	destroyed.emit()
+	
 func _on_missle_spawn_timer_timeout() -> void:
 	if is_destroyed:
 		return

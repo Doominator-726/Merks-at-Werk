@@ -10,9 +10,15 @@ extends Node2D
 @onready var field_timer: Node = $FieldTimer
 @onready var spawn_timer: Node = $SpawnTimer
 
+@onready var player = get_tree().get_first_node_in_group("player")
+@onready var stations = $Stations
+
+signal field_clear
+
 var map_size: Vector2
 
 func _ready():
+	player.global_position = spawn_position
 	Globals.player_position = spawn_position
 	if timer_enabled:
 		print("start field timer")
@@ -24,6 +30,7 @@ func _ready():
 	map_size = Vector2(tile_map.get_used_rect().size) * Vector2(tile_map.tile_set.tile_size) * tile_map.scale
 	get_parent().map_size = map_size
 	$ParallaxBackground/Parallax2D.repeat_size = map_size
+	$ParallaxBackground/Parallax2D.repeat_times = 3
 	$ParallaxBackground/Parallax2D.scroll_offset = spawn_position
 	var start = tile_map.to_global(tile_map.map_to_local(tile_map.get_used_rect().position))
 	var end = tile_map.to_global(tile_map.map_to_local(tile_map.get_used_rect().end))
@@ -33,16 +40,22 @@ func _ready():
 	Globals.map_size = map_size
 	Globals.map_bounds = map_bounds
 	$ParallaxBackground/Parallax2D.scroll_offset = spawn_position
+	
+	for s in stations.get_children():
+		s.destroyed.connect(_check_all_stations_destroyed)
+	
 	print("map bounds = ", Globals.map_bounds)
 	print("map size = ", Globals.map_size)
 	print("spawn position = ", spawn_position)
+
+	print("Station count: ", get_tree().get_node_count_in_group("station"), ", Destroyed count: ", get_tree().get_node_count_in_group("destroyed"))
 
 func _process(_delta: float) -> void:
 	if timer_enabled:
 		Globals.field_time_left = field_timer.time_left
 
 
-func _on_SpawnTimer_timeout() -> void:
+func _on_spawn_timer_timeout() -> void:
 	var missile = missile_scene.instantiate()
 	var screen_size = DisplayServer.screen_get_size()
 	var edge_pos : Vector2 = screen_size * 3 / 2
@@ -66,3 +79,14 @@ func _on_SpawnTimer_timeout() -> void:
 	add_child(missile)
 	print("Booyakasha! gp = ", missile.global_position, ", edge = ", edge_pos)
 	spawn_timer.start()
+
+"""This function can be overriden per field.
+For example, Level 1, Field 1 automatically ends after 30 seconds."""
+func _check_all_stations_destroyed():
+	print("Station count: ", get_tree().get_node_count_in_group("station"), ", Destroyed count: ", get_tree().get_node_count_in_group("destroyed"))
+	if (
+		get_tree().get_node_count_in_group("station")
+		== get_tree().get_node_count_in_group("destroyed")
+		):
+		print("Field complete!")
+		field_clear.emit()
