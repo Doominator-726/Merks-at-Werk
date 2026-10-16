@@ -3,7 +3,7 @@ extends Node2D
 
 @onready var head : Node2D = $head2
 @onready var left_arm : Node2D = $left_arm2
-@onready var right_arm : Node2D = $right_arm2
+#@onready var right_arm : Node2D = $right_arm2
 @onready var torso : Node2D = $torso2
 @onready var feet : Node2D = $feet2
 
@@ -15,7 +15,7 @@ extends Node2D
 var head_direction : Vector2
 var torso_direction : Vector2
 var left_arm_direction : Vector2
-var right_arm_direction : Vector2
+#var right_arm_direction : Vector2
 var feet_direction : Vector2
 @export var head_faces_target : bool = true
 @export var arms_faces_target : bool = true
@@ -35,7 +35,7 @@ func _process(delta):
 	if facing != null:
 		head_direction = facing
 		left_arm_direction = facing
-		right_arm_direction = facing
+		#right_arm_direction = facing
 		feet_direction = facing
 	torso_direction = get_safe_torso_direction()
 	if (target):
@@ -49,13 +49,13 @@ func direct_head_towards_target():
 	head_direction = target.global_position - global_position
 func direct_arms_towards_target():
 	left_arm_direction = target.global_position - global_position
-	right_arm_direction = target.global_position - global_position
+	#right_arm_direction = target.global_position - global_position
 
 func rotate_parts_towards_directions(delta):
 	rotate_part_towards(head, head_direction, delta * head_turn_speed)
 	rotate_part_towards(feet, feet_direction, delta * feet_turn_speed)
 	rotate_part_towards(left_arm, left_arm_direction, delta * arm_turn_speed)
-	rotate_part_towards(right_arm, right_arm_direction, delta * arm_turn_speed)
+	#rotate_part_towards(right_arm, right_arm_direction, delta * arm_turn_speed)
 	rotate_part_towards(torso, torso_direction, delta * torso_turn_speed)
 	
 
@@ -69,7 +69,7 @@ func rotate_part_towards(part : Node2D, direction : Vector2, delta):
 func get_safe_torso_direction():
 	return Vector2.from_angle((
 		left_arm_direction.angle() +
-		right_arm_direction.angle() +
+		#right_arm_direction.angle() +
 		head_direction.angle() +
 		feet_direction.angle()
 	)/4)

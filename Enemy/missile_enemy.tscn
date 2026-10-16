@@ -2,6 +2,11 @@
 
 [ext_resource type="PackedScene" uid="uid://2oqfqxx5b61g" path="res://Enemy/enemy.tscn" id="1_ira0i"]
 [ext_resource type="Texture2D" uid="uid://bbp8oqgqw25sy" path="res://Player/assets/arrow.png" id="2_f2qha"]
+[ext_resource type="Script" uid="uid://d4m438y3wt2ei" path="res://Player/mech_rig_controller.gd" id="3_i7xja"]
+[ext_resource type="Texture2D" uid="uid://bykky1hwg3bgi" path="res://Enemy/assets/legs.png" id="4_i7xja"]
+[ext_resource type="Texture2D" uid="uid://cuvpsmfhbi8h7" path="res://Enemy/assets/torso.png" id="5_sryd8"]
+[ext_resource type="Texture2D" uid="uid://deqjkei3j8hae" path="res://Enemy/assets/arms.png" id="6_1h0k7"]
+[ext_resource type="Texture2D" uid="uid://br2utka0xewj3" path="res://Enemy/assets/head.png" id="7_x6prb"]
 
 [node name="MissileEnemy" unique_id=1721345674 instance=ExtResource("1_ira0i")]
 collision_mask = 3
@@ -10,9 +15,27 @@ speed = 300.0
 homing = true
 
 [node name="Sprite" parent="." index="1" unique_id=7298653]
+visible = false
 modulate = Color(1, 0, 0, 1)
 rotation = 1.5707964
 texture = ExtResource("2_f2qha")
 
 [node name="DespawnTimer" parent="." index="2" unique_id=2055281637]
 one_shot = true
+
+[node name="mecha" type="Node2D" parent="." index="3" unique_id=271407047]
+scale = Vector2(1.5, 1.5)
+script = ExtResource("3_i7xja")
+front_direction = Vector2(0, 1)
+
+[node name="feet2" type="Sprite2D" parent="mecha" index="0" unique_id=676638685]
+texture = ExtResource("4_i7xja")
+
+[node name="torso2" type="Sprite2D" parent="mecha" index="1" unique_id=1981911073]
+texture = ExtResource("5_sryd8")
+
+[node name="left_arm2" type="Sprite2D" parent="mecha" index="2" unique_id=2120581714]
+texture = ExtResource("6_1h0k7")
+
+[node name="head2" type="Sprite2D" parent="mecha" index="3" unique_id=1537759573]
+texture = ExtResource("7_x6prb")
