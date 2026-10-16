@@ -1,5 +1,9 @@
 [gd_scene format=3 uid="uid://cy5oo282a0agm"]
 
 [ext_resource type="PackedScene" uid="uid://brkbx6pmpd4ik" path="res://Bullets/base_bullet.tscn" id="1_88ptc"]
+[ext_resource type="Texture2D" uid="uid://bjc40wbei0bfx" path="res://Player/assets/bullet1.png" id="2_5ljcc"]
 
 [node name="BaseBullet" unique_id=857817251 instance=ExtResource("1_88ptc")]
+
+[node name="Sprite2D" parent="." index="0" unique_id=988235252]
+texture = ExtResource("2_5ljcc")

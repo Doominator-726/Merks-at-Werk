@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bbp8oqgqw25sy"
-path="res://.godot/imported/arrow.png-2d4068209a0f5f2fcef88153dc08084e.ctex"
+uid="uid://ditf45bk62fsg"
+path="res://.godot/imported/Mc_mech-Sheet.png-f4a1d594eec7bffd8bab010198f1f034.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Player/arrow.png"
-dest_files=["res://.godot/imported/arrow.png-2d4068209a0f5f2fcef88153dc08084e.ctex"]
+source_file="res://Player/assets/Mc_mech-Sheet.png"
+dest_files=["res://.godot/imported/Mc_mech-Sheet.png-f4a1d594eec7bffd8bab010198f1f034.ctex"]
 
 [params]
 
