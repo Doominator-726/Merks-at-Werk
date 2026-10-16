@@ -1,29 +1,30 @@
 extends Node
 
 var levels : Array[String] = [
-	"res://Levels/level1.tscn",
-	"res://Levels/level2.tscn",
-	"res://Levels/level3.tscn",
-	"res://Levels/level4.tscn"
+	"01",
+	"02",
 ]
 
-var current_level_index : int = 0
-var current_level = 1
+var current_level
+var current_level_index: int = 1
 var current_field
+var current_field_index: int = 0
 var map_size : Vector2
 
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	load_field(0)
+	current_level_index = 1
+	load_field(1)
 
 func load_level(index : int):
 	if 0 <= index and index < levels.size():
-		if current_level:
-			current_level.queue_free()
-		current_level = load(levels[index])
-		add_child(current_level)
+		if current_field:
+			current_field.queue_free()
+		current_level = index
+		current_field_index = 0
+		load_field(current_field_index)
 func load_field(index : int):
 	if index == 0:
 		if current_field:
@@ -33,11 +34,26 @@ func load_field(index : int):
 	elif 1 <= index and index < INF:
 		if current_field:
 			current_field.queue_free()
-		var current_level_string = str(current_level).pad_zeros(2);
-		var index_string = str(index)
-		var current_field_filename = "res://Levels/" + current_level_string + "/field_" + index_string + ".tscn"
+		var current_field_filename = get_field(index)
 		print(current_field_filename)
 		current_field = load(current_field_filename).instantiate()
-		print("%d loaded" % index)
+		current_field_index = index
+		print("%d loaded" % current_field_index)
 	add_child(current_field)
 	map_size = current_field.map_size
+	current_field.field_clear.connect(next_field)
+
+func next_field():
+	print("My child's name is ", get_children()[0].name)
+	if not is_demo_field():
+		await get_tree().create_timer(2.5).timeout
+		load_field(current_field_index + 1)
+		
+func get_level(index: int):
+	return "res://Levels/%02d/" % [index]
+	
+func get_field(index: int):
+	return get_level(current_level_index) + "/field_%d.tscn" % [index]
+	
+func is_demo_field():
+	return get_children()[0].name.contains("Demo")
