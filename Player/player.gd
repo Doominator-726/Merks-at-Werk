@@ -9,6 +9,8 @@ const DODGE_ACCELERATION = 14400
 const DODGE_DURATION = 0.25
 const DODGE_COOLDOWN_DURATION = 0.5
 const FRICTION = 5400
+const EXIT_ACCELERATION = 1200.0
+const EXIT_CAMERA_SPEED = 3.0
 
 @export var shot_pattern: ShotPattern
 @export var back_shot_pattern: ShotPattern
@@ -26,6 +28,8 @@ var bullet_hell_mode := false
 @onready var dodge: Dodge = null
 @onready var dodge_cooldown: float = 0.0
 var shooting_enabled = true
+var controls_enabled: bool = true
+var exiting: bool = false
 
 @export var health: int = 5
 
@@ -75,6 +79,9 @@ func is_orthogonal(axis_1: Vector2, axis_2: Vector2) -> bool:
 
 
 func move(delta: float):
+	if exiting:
+		move_exit(delta)
+		return
 	dodge_cooldown = max(0, dodge_cooldown - delta)
 	if dodge != null:
 		move_dodge(delta)
@@ -91,6 +98,13 @@ func move_dodge(delta: float):
 		velocity *= vel_mult
 	velocity = velocity.limit_length(MAX_DODGE_SPEED)
 	dodge = dodge.decay(delta)
+
+
+func move_exit(delta: float):
+	dodge = null
+	axis = Vector2.UP
+	velocity.x = move_toward(velocity.x, 0.0, FRICTION * delta)
+	velocity.y = minf(velocity.y, 0.0) - EXIT_ACCELERATION * delta
 
 
 func move_default(delta: float):
@@ -131,7 +145,7 @@ func apply_friction(amount: float):
 
 
 func _process(_delta: float):
-	if Input.is_action_pressed("Shoot") and shooting_enabled:
+	if controls_enabled and Input.is_action_pressed("Shoot") and shooting_enabled:
 		shoot()
 
 
@@ -151,7 +165,7 @@ func shoot():
 		)
 	if back_shot_pattern:
 		back_shot_pattern.fire(
-			SpawnPosBehind.global_position,
+			SpawnPosBehind.globasal_position,
 			rad_to_deg((-axis).angle()),
 			get_tree().current_scene,
 		)
@@ -176,7 +190,30 @@ func set_shot_pattern(pattern: ShotPattern) -> void:
 	weapon_changed.emit(pattern)
 
 
+func start_exit() -> void:
+	exiting = true
+	controls_enabled = false
+	remove_from_group("looping_entity")
+	var cam := get_viewport().get_camera_2d()
+	if cam:
+		cam.position_smoothing_enabled = true
+		cam.position_smoothing_speed = EXIT_CAMERA_SPEED
+
+
+func finish_exit() -> void:
+	exiting = false
+	velocity = Vector2.ZERO
+	add_to_group("looping_entity")
+	var cam := get_viewport().get_camera_2d()
+	if cam:
+		cam.position_smoothing_enabled = false
+		cam.reset_smoothing()
+	controls_enabled = true
+
+
 func hit(damage):
+	if exiting:
+		return
 	HitAnim.hit_flash(self, 0.3, 0.0)
 	health -= damage
 	if health <= 0:

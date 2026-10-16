@@ -4,6 +4,7 @@ extends Node2D
 @export var spawn_position : Vector2 = Vector2.ZERO
 @export var bonus_points  : int = 40
 @export var timer_enabled : bool = false
+@export var max_time : int = 60
 
 @export var missile_scene : PackedScene = preload("res://Enemy/missile_enemy.tscn")
 
@@ -22,6 +23,7 @@ func _ready():
 	Globals.player_position = spawn_position
 	if timer_enabled:
 		print("start field timer")
+		field_timer.wait_time = max_time
 		field_timer.start()
 	
 	# Get map size and bounds using tile map.
@@ -96,4 +98,10 @@ func _check_all_stations_destroyed():
 #normally bad things should happen if the timer clears
 # before the player completes the level
 func _on_field_timer_timeout() -> void:
-	pass
+	print("We've been tracked! Hurry!")
+	await get_tree().create_timer(3).timeout
+	print("Oh !&@#...")
+	while spawn_timer.wait_time > 1:
+		spawn_timer.wait_time -= 1
+		await get_tree().create_timer(5).timeout
+	print("spawn_timer.wait_time = {0}".format([spawn_timer.wait_time]))

@@ -61,6 +61,8 @@ sources/0 = SubResource("TileSetAtlasSource_oaw8j")
 
 [node name="Field1" unique_id=1026051808 instance=ExtResource("1_j6bkf")]
 script = ExtResource("2_0042q")
+timer_enabled = true
+max_time = 30
 
 [node name="Parallax2D" parent="ParallaxBackground" parent_id_path=PackedInt32Array(1386508579) index="0" unique_id=1690788066]
 follow_viewport = false
@@ -72,8 +74,6 @@ tile_set = SubResource("TileSet_s271d")
 
 [node name="FieldTimer" parent="." index="4" unique_id=1469194110]
 wait_time = 30.0
-one_shot = true
-autostart = true
 
 [node name="SpawnTimer" parent="." index="5" unique_id=2117181400]
 wait_time = 1.0

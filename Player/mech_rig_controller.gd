@@ -1,11 +1,11 @@
 class_name MechRigController
 extends Node2D
 
-@onready var head : Node2D = $head2
-@onready var left_arm : Node2D = $left_arm2
-#@onready var right_arm : Node2D = $right_arm2
-@onready var torso : Node2D = $torso2
-@onready var feet : Node2D = $feet2
+@onready var head : Node2D = $Head
+@onready var left_arm : Node2D = $LeftArm
+@onready var right_arm : Node2D = $RightArm
+@onready var torso : Node2D = $Torso
+@onready var feet : Node2D = $Feet
 
 @export var target : Node2D
 @export var head_turn_speed : float = 1.0*PI

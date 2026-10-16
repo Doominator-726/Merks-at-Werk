@@ -24,6 +24,9 @@ var current_speed: float = 0.0
 @export var drop_scene: PackedScene
 @export_range(0.0, 1.0) var drop_chance: float = 0.0
 
+@export_category("Scoring")
+@export var score: int = 50
+
 func _ready() -> void:
 	if !homing:
 		rotation = axis.angle()
@@ -74,6 +77,7 @@ func hit(damage=1):
 	HitAnim.hit_flash(get_sprite())
 	health -= damage
 	if health <= 0:
+		Globals.score += score
 		drop_powerup()
 		explode()
 

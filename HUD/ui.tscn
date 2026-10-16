@@ -46,11 +46,11 @@ offset_top = 0.29789257
 offset_right = 330.0
 offset_bottom = 28.297894
 
-[node name="scoreText" type="Label" parent="." unique_id=399080211]
+[node name="ScoreText" type="Label" parent="." unique_id=399080211]
 offset_left = 161.0
 offset_right = 327.0
 offset_bottom = 26.0
-text = "Score: 200000"
+text = "Score:"
 label_settings = SubResource("LabelSettings_8mrxo")
 horizontal_alignment = 1
 
