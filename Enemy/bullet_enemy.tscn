@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://5jsy613n8yxi"]
 
 [ext_resource type="PackedScene" uid="uid://2oqfqxx5b61g" path="res://Enemy/enemy.tscn" id="1_jqc5q"]
-[ext_resource type="Texture2D" uid="uid://bbp8oqgqw25sy" path="res://Player/arrow.png" id="2_jqc5q"]
+[ext_resource type="Texture2D" uid="uid://bbp8oqgqw25sy" path="res://Player/assets/arrow.png" id="2_jqc5q"]
 
 [node name="BulletEnemy" unique_id=1721345674 instance=ExtResource("1_jqc5q")]
 collision_mask = 1

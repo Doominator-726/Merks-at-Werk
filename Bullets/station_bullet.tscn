@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cqw14lxk8igvv"]
 
-[ext_resource type="Texture2D" uid="uid://doecb30wltyvq" path="res://Player/bullet.png" id="2_mcw3u"]
+[ext_resource type="Texture2D" uid="uid://doecb30wltyvq" path="res://Player/assets/bullet.png" id="2_mcw3u"]
 
 [sub_resource type="GDScript" id="GDScript_jv6kp"]
 script/source = "extends Bullet

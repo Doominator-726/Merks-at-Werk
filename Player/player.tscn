@@ -1,12 +1,21 @@
 [gd_scene format=3 uid="uid://ckudr8chj1kgo"]
 
 [ext_resource type="Script" uid="uid://80kl10p8d3vr" path="res://Player/player.gd" id="1_4ntmi"]
-[ext_resource type="Texture2D" uid="uid://bbp8oqgqw25sy" path="res://Player/arrow.png" id="2_btcbx"]
 [ext_resource type="Resource" uid="uid://crwwjlax4edtd" path="res://Bullets/default_pattern.tres" id="2_k53q1"]
 [ext_resource type="PackedScene" uid="uid://bk54nqr8r4kcx" path="res://Player/mech_rig.tscn" id="4_k53q1"]
 [ext_resource type="Script" uid="uid://diyh76t1kbfuk" path="res://Bullets/shot_pattern.gd" id="5_tiers"]
 [ext_resource type="Resource" uid="uid://dxpcuer07gm7" path="res://Bullets/tri_shot.tres" id="6_tiers"]
 [ext_resource type="Resource" uid="uid://bkwn01b6xsegt" path="res://Bullets/ring_shot.tres" id="7_tiers"]
+[ext_resource type="Texture2D" uid="uid://cvsshen4h4u3c" path="res://Player/assets/tile000.png" id="4_od3ui"]
+[ext_resource type="Texture2D" uid="uid://crf3aqb3pighb" path="res://Player/assets/tile001.png" id="5_00tjw"]
+[ext_resource type="Texture2D" uid="uid://csh6g3ulmmuwt" path="res://Player/assets/tile002.png" id="6_x3vf3"]
+[ext_resource type="Texture2D" uid="uid://vph06f8p2d6b" path="res://Player/assets/tile003.png" id="7_apopc"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_o05kc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5htga"]
+atlas = SubResource("CompressedTexture2D_o05kc")
+region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ejy3u"]
 radius = 5.3851647
@@ -20,11 +29,24 @@ back_shot_pattern = ExtResource("2_k53q1")
 upgrade_tiers = Array[ExtResource("5_tiers")]([ExtResource("2_k53q1"), ExtResource("6_tiers"), ExtResource("7_tiers")])
 
 [node name="mech" parent="." unique_id=1512406156 instance=ExtResource("4_k53q1")]
+scale = Vector2(2, 2)
+torso_turn_speed = 2.5
+front_direction = Vector2(0, 1)
 
-[node name="Sprite" type="Sprite2D" parent="." unique_id=2108546706]
-texture_filter = 1
-rotation = 1.5707964
-texture = ExtResource("2_btcbx")
+[node name="feet2" type="Sprite2D" parent="mech" unique_id=1997292450]
+texture = ExtResource("4_od3ui")
+
+[node name="torso2" type="Sprite2D" parent="mech" unique_id=454088313]
+texture = ExtResource("5_00tjw")
+
+[node name="left_arm2" type="Sprite2D" parent="mech" unique_id=1605508667]
+texture = ExtResource("6_x3vf3")
+
+[node name="right_arm2" type="Sprite2D" parent="mech" unique_id=1030672205]
+texture = SubResource("AtlasTexture_5htga")
+
+[node name="head2" type="Sprite2D" parent="mech" unique_id=908769996]
+texture = ExtResource("7_apopc")
 
 [node name="HitBox" type="CollisionShape2D" parent="." unique_id=1531635376]
 shape = SubResource("CircleShape2D_ejy3u")

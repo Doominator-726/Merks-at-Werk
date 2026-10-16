@@ -1,11 +1,11 @@
 class_name MechRigController
 extends Node2D
 
-@onready var head : Node2D = $head
-@onready var left_arm : Node2D = $left_arm
-@onready var right_arm : Node2D = $right_arm
-@onready var torso : Node2D = $torso
-@onready var feet : Node2D = $feet
+@onready var head : Node2D = $head2
+@onready var left_arm : Node2D = $left_arm2
+@onready var right_arm : Node2D = $right_arm2
+@onready var torso : Node2D = $torso2
+@onready var feet : Node2D = $feet2
 
 @export var target : Node2D
 @export var head_turn_speed : float = 1.0*PI
@@ -30,6 +30,13 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	global_rotation = 0   
+	var facing = get_parent().get("axis")
+	if facing != null:
+		head_direction = facing
+		left_arm_direction = facing
+		right_arm_direction = facing
+		feet_direction = facing
 	torso_direction = get_safe_torso_direction()
 	if (target):
 		if (head_faces_target):
@@ -55,7 +62,7 @@ func rotate_parts_towards_directions(delta):
 func rotate_part_towards(part : Node2D, direction : Vector2, delta):
 	part.global_rotation = lerp_angle(
 		part.global_rotation,
-		direction.angle() + sprite_front_rotation,
+		direction.angle() - sprite_front_rotation,
 		delta
 	)
 	
