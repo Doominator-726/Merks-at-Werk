@@ -1,0 +1,37 @@
+[gd_scene format=4 uid="uid://cwin7screen4b"]
+
+[ext_resource type="Script" uid="uid://dwin2scr8pt5k" path="res://HUD/win_screen.gd" id="1_win"]
+
+[node name="WinScreen" type="CanvasLayer" unique_id=1633077201 groups=["win_screen"]]
+layer = 50
+script = ExtResource("1_win")
+
+[node name="Background" type="ColorRect" parent="." unique_id=905512344]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="VBox" type="VBoxContainer" parent="." unique_id=1377218065]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="Title" type="Label" parent="VBox" unique_id=466190122]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "YOU WIN"
+horizontal_alignment = 1
+
+[node name="Hint" type="Label" parent="VBox" unique_id=1920087731]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Press Shoot to play again"
+horizontal_alignment = 1

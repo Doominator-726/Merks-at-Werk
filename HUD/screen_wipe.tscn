@@ -1,0 +1,17 @@
+[gd_scene format=4 uid="uid://bwipe5k2m8qxr"]
+
+[ext_resource type="Script" uid="uid://dq8wipe3n5v7c" path="res://HUD/screen_wipe.gd" id="1_wipe"]
+
+[node name="ScreenWipe" type="CanvasLayer" unique_id=1849302711 groups=["screen_wipe"]]
+layer = 100
+script = ExtResource("1_wipe")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=744210958]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
