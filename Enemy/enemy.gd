@@ -65,6 +65,7 @@ func _physics_process(delta: float) -> void:
 				explode()
 	
 func hit(damage=1):
+	HitAnim.hit_flash(get_sprite())
 	health -= damage
 	if health <= 0:
 		explode()

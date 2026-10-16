@@ -12,6 +12,7 @@ const FRICTION = 5400
 
 @export var shot_pattern: ShotPattern
 @export var back_shot_pattern: ShotPattern
+var bullet_hell_mode := false
 
 @onready var input_axis = Vector2.ZERO
 @onready var axis = Vector2.UP
@@ -46,6 +47,11 @@ class Dodge:
 
 
 func _physics_process(delta: float) -> void:
+	if bullet_hell_mode:
+		move_bullet_hell(delta)
+		move_and_slide()
+		Globals.player_position = global_position
+		return
 	
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -143,6 +149,7 @@ func shoot():
 
 
 func hit(damage):
+	HitAnim.hit_flash(self, 0.3, 0.0)
 	health -= damage
 	if health <= 0:
 		explode()
@@ -158,5 +165,11 @@ func debug_action():
 		print("player gp=", global_position, ", local gp =", position)
 
 func snap_to_tenths(vector: Vector2):
-	# Rounds components of vector to tenths place
+
 	return vector.snapped(Vector2(0.1, 0.1))
+func move_bullet_hell(delta: float) -> void:
+	dodge = null
+	axis = Vector2.UP                     
+	var input : Vector2 = get_input_axis()
+	velocity = input.normalized() * speed  
+	rotate_default(delta)                 
