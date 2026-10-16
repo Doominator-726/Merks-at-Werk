@@ -18,6 +18,7 @@ func _process(_delta: float) -> void:
 		ticker_increment += 1
 	else:
 		ticker_increment = 0
+	$ScoreText.text = "Score: " + str(Globals.score)
 
 func resume_game():
 	get_tree().paused = false

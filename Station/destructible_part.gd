@@ -7,6 +7,9 @@ signal destroyed
 @export var start_texture: Texture2D
 @export var destroyed_texture: Texture2D
 
+@export_category("Scoring")
+@export var score: int = 100
+
 var current_health: float
 
 
@@ -25,6 +28,7 @@ func hit(damage: float):
 
 	current_health -= damage
 	if is_destroyed():
+		Globals.score += score
 		destroy_part()
 
 func enable_part():

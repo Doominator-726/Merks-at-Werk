@@ -3,6 +3,9 @@ extends Node2D
 @export var missile_scene: PackedScene = preload("res://Enemy/missile_enemy.tscn")
 @export var bullet_scene: PackedScene = preload("res://Station/station_bullet.tscn")
 
+@export_category("Scoring")
+@export var score: int = 1250
+
 var is_destroyed = false
 
 signal destroyed
@@ -36,6 +39,10 @@ func destroy_station():
 	is_destroyed = true
 	add_to_group("destroyed")
 	print("station destroyed")
+	if $Core.current_health == 0:
+		Globals.score += 1500 - 100 * (4 - len(_get_weaks()))
+	else:
+		Globals.score += 600
 	$Core.destroy_part()
 	$Core.disable_part()
 	for weak in _get_weaks():

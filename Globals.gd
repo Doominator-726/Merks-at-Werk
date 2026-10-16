@@ -5,3 +5,5 @@ var player_position = Vector2(0, 0)
 
 var map_bounds: Rect2
 var map_size: Vector2
+
+var score: int = 0
